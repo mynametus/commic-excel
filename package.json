@@ -5,7 +5,12 @@
   "scripts": {
     "start": "node scripts/serve.js"
   },
-  "engines": { "node": ">=18" },
+  "engines": {
+    "node": ">=18"
+  },
   "license": "UNLICENSED",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "@anthropic-ai/sdk": "^0.71.0"
+  }
 }

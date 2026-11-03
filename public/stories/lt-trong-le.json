@@ -1,0 +1,35 @@
+{
+  "id": "lt-trong-le",
+  "title": "Trồng lê",
+  "titleZh": "種梨",
+  "author": "Bồ Tùng Linh",
+  "authorZh": "蒲松齡",
+  "work": "Liêu Trai chí dị",
+  "genre": "co-dai",
+  "era": "Nhà Thanh, thế kỷ 17",
+  "desc": "Anh bán lê keo kiệt không chịu cho đạo sĩ nghèo một quả. Đạo sĩ bèn trồng ngay một cây lê giữa chợ, hái quả mời cả chợ ăn — và anh bán lê là người cuối cùng hiểu chuyện gì đã xảy ra.",
+  "source": "https://www.gutenberg.org/ebooks/51828",
+  "license": "Nguyên tác thuộc phạm vi công cộng (tác giả mất năm 1715). Bản dịch tiếng Việt mới, dịch từ nguyên tác chữ Hán.",
+  "translator": "Claude (AI) — bản dịch nháp, cần biên tập lại",
+  "chapters": [
+    {
+      "title": "Trồng lê",
+      "paras": [
+        "Có người nhà quê chở lê ra chợ bán, lê rất ngọt thơm, giá bán đắt lắm. Có một đạo sĩ khăn rách, áo bông tả tơi đứng trước xe xin ăn. Người nhà quê quát đuổi, đạo sĩ vẫn không đi; người nhà quê nổi giận, mắng nhiếc thậm tệ.",
+        "Đạo sĩ nói: “Một xe có tới mấy trăm quả, bần đạo chỉ xin một quả, với cư sĩ cũng chẳng thiệt hại gì lớn, sao lại giận dữ thế?” Người xem xung quanh khuyên đưa cho một quả xấu để ông ta đi, người nhà quê nhất định không chịu.",
+        "Một người làm thuê trong quán thấy cãi vã ồn ào không chịu nổi, bèn bỏ tiền mua một quả đưa cho đạo sĩ. Đạo sĩ vái tạ, rồi nói với mọi người: “Người xuất gia không biết keo kiệt. Bần đạo có lê ngon, xin đem ra mời các vị.” Có người hỏi: “Đã có lê sao không tự ăn?” Đạo sĩ đáp: “Ta chỉ cần cái hạt này để làm giống thôi.”",
+        "Rồi ông cầm quả lê ăn, ăn gần hết thì giữ hạt trong tay, cởi chiếc mai đeo trên vai xuống, đào một hố sâu mấy tấc, đặt hạt vào rồi lấp đất lên. Ông xin người trong chợ nước nóng để tưới; có người hiếu sự vào quán ven đường xin được một bát nước sôi, đạo sĩ đỡ lấy tưới lên hố.",
+        "Muôn con mắt đổ dồn vào nhìn, thấy một mầm non nhú lên, lớn dần; thoắt cái đã thành cây, cành lá sum suê; rồi bỗng chốc nở hoa, bỗng chốc kết quả, quả to tròn thơm ngát, trĩu trịt đầy cây. Đạo sĩ bèn hái ngay trên ngọn cây chia cho người xem, chốc lát đã hết sạch. Xong, ông lấy mai chặt cây, chặt binh binh hồi lâu mới đứt, rồi vác cả cây lẫn lá lên vai, thong thả bước đi.",
+        "Lúc đạo sĩ bắt đầu làm phép, người nhà quê cũng đứng lẫn trong đám đông, nghển cổ chăm chú nhìn, quên cả việc buôn bán của mình. Đạo sĩ đi rồi, anh ta mới quay lại nhìn xe, thì lê đã sạch trơn; lúc ấy mới vỡ lẽ những quả vừa được chia ra đều là lê của mình.",
+        "Nhìn kỹ lại, anh thấy trên xe mất một cái càng, chỗ gãy còn mới tinh như vừa bị chặt. Anh ta tức tối vô cùng, vội đuổi theo; vừa rẽ qua góc tường thì thấy cái càng xe bị chặt vứt dưới chân tường, mới biết cây lê vừa bị chặt chính là nó. Còn đạo sĩ thì chẳng biết đi đâu mất. Cả chợ cười ồ.",
+        "Dị sử thị nói: “Người nhà quê u mê, bộ dạng ngờ nghệch đến buồn cười, bị người chợ chê cười cũng phải. Thường thấy trong làng những người tiếng là giàu có, bạn tốt xin chút gạo thì sa sầm mặt, lại tính toán: ‘Đó là cái ăn mấy ngày đấy.’ Hoặc có người khuyên giúp một kẻ gặp nạn, nuôi một bữa cơm cho người cô quạnh, thì lại tức giận, lại tính: ‘Đó là cái ăn của năm, mười người đấy.’ Thậm chí cha con anh em với nhau cũng so đo từng đồng từng cắc. Thế nhưng đến khi đam mê cờ bạc trác táng thì dốc hết túi không tiếc; dao kề đến cổ thì chuộc mạng còn không kịp. Những chuyện như thế kể sao cho xiết; anh nhà quê ngu ngốc kia, có gì đáng lạ đâu.”"
+      ]
+    }
+  ],
+  "sourceRef": {
+    "book": "liaozhai",
+    "parts": [
+      "種梨"
+    ]
+  }
+}

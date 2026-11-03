@@ -1,0 +1,90 @@
+{
+  "id": "oanh-oanh-truyen",
+  "title": "Oanh Oanh truyện",
+  "titleZh": "鶯鶯傳",
+  "author": "Nguyên Chẩn",
+  "authorZh": "元稹",
+  "work": "Truyền kỳ đời Đường",
+  "genre": "ngon-tinh",
+  "era": "Nhà Đường, thế kỷ 9",
+  "desc": "Chàng thư sinh họ Trương gặp người em họ xa Thôi Oanh Oanh khi trọ ở chùa Phổ Cứu. Mối tình lén lút nơi mái Tây sương, những bức thư và câu thơ để lại — câu chuyện tình nổi tiếng nhất đời Đường, về sau trở thành gốc của vở “Tây sương ký”.",
+  "source": "https://www.gutenberg.org/ebooks/52267",
+  "license": "Nguyên tác thuộc phạm vi công cộng (tác giả mất năm 831). Bản dịch tiếng Việt mới, dịch từ nguyên tác chữ Hán.",
+  "translator": "Claude (AI) — bản dịch nháp, cần biên tập lại",
+  "chapters": [
+    {
+      "title": "Phần 1: Gặp gỡ ở chùa Phổ Cứu",
+      "paras": [
+        "Khoảng niên hiệu Trinh Nguyên đời Đường, có một chàng họ Trương, tính tình ôn hòa, phong thái đẹp đẽ, trong lòng giữ mình kiên định, việc gì trái lễ thì không làm. Có khi theo bạn bè dự tiệc vui chơi, giữa chốn ồn ào, người khác ai nấy đều sôi nổi hăm hở như sợ không kịp, Trương sinh chỉ giữ vẻ nhã nhặn, trước sau không hề bị cuốn theo. Vì thế đến năm hai mươi ba tuổi chàng vẫn chưa từng gần gũi nữ sắc.",
+        "Người quen hỏi vặn, chàng chối mà nói: “Đăng Đồ Tử không phải kẻ háo sắc, mà là kẻ có hành vi xấu xa. Tôi mới thật là kẻ háo sắc, chỉ là chưa gặp được người. Sao lại nói thế? Phàm vật gì tuyệt diệu, tôi chưa từng không lưu luyến trong lòng; nhờ đó biết mình không phải kẻ vô tình.” Người hỏi ghi nhớ lời ấy.",
+        "Ít lâu sau, Trương sinh đi chơi đất Bồ. Cách phía đông đất Bồ hơn mười dặm có ngôi chùa tên là Phổ Cứu, Trương sinh trọ lại đó. Vừa lúc có bà quả phụ họ Thôi sắp về Trường An, đi ngang qua đất Bồ, cũng dừng chân ở chùa này. Bà Thôi vốn là con gái họ Trịnh; mẹ Trương sinh cũng xuất thân họ Trịnh, lần theo dòng họ thì bà là dì họ xa của chàng.",
+        "Năm ấy, Hồn Giám mất ở đất Bồ. Viên hoạn quan Đinh Văn Nhã không giỏi cai quản quân lính, quân sĩ nhân dịp tang ma mà làm loạn, cướp bóc dân đất Bồ dữ dội. Nhà họ Thôi tài sản rất nhiều, lại đông tôi tớ, đang ở trọ nơi đất khách nên kinh hoàng, không biết nương tựa vào đâu. Trước đó, Trương sinh có quen thân với bè bạn của viên tướng đất Bồ, bèn nhờ quan lại đến bảo vệ, nhờ vậy nhà họ Thôi không bị vạ lây. Hơn mười ngày sau, quan Liêm sứ Đỗ Xác vâng mệnh thiên tử đến nắm quyền chỉ huy, ra lệnh nghiêm, quân lính từ đó mới yên.",
+        "Bà Trịnh hết sức cảm kích ân đức của Trương sinh, bèn bày tiệc mời chàng nơi nhà chính, rồi nói: “Dì là người góa bụa chưa chết, dắt díu con thơ, chẳng may gặp lúc quân lính làm loạn, thật không giữ nổi thân mình. Đứa con trai yếu ớt, đứa con gái nhỏ dại, đều như được cháu cho sống lại, sao có thể ví với ơn thường? Nay bảo chúng ra chào cháu theo lễ anh em, mong lấy đó báo đáp phần nào.”",
+        "Bà gọi con trai ra, tên là Hoan Lang, chừng hơn mười tuổi, dáng mạo hiền hòa xinh xắn. Kế đến gọi con gái: “Ra lạy anh con đi, anh con đã cứu sống con đấy.” Hồi lâu, cô gái cáo ốm không ra. Bà Trịnh giận nói: “Anh Trương giữ được mạng sống cho con, nếu không thì con đã bị bắt đi rồi, còn giữ ý tránh hiềm làm gì nữa?”",
+        "Hồi lâu nàng mới ra, mặc áo thường ngày, nét mặt thuần hậu, không trang điểm gì thêm. Tóc mai buông rủ chạm hàng mày, hai má chỉ ửng hồng mà thôi, nhan sắc diễm lệ khác thường, rạng rỡ làm rung động lòng người. Trương sinh sững sờ, đứng dậy làm lễ chào. Nàng ngồi xuống bên mẹ; vì bị mẹ ép phải ra gặp, nàng chỉ đăm đăm nhìn xuống, vẻ hờn dỗi khôn tả, như không đứng vững nổi. Hỏi tuổi, bà Trịnh đáp: “Sinh vào tháng bảy năm Giáp Tý đời thiên tử hiện nay, đến năm Canh Thìn này là mười bảy tuổi.” Trương sinh khéo dùng lời gợi chuyện, nàng không đáp, cho đến hết tiệc."
+      ]
+    },
+    {
+      "title": "Phần 2: Bài thơ dưới mái Tây sương",
+      "paras": [
+        "Từ đó Trương sinh say mê nàng, muốn bày tỏ tình ý mà không có cách nào. Nhà họ Thôi có cô tỳ nữ tên là Hồng Nương; Trương sinh mấy lần lén chào hỏi, tặng quà, rồi nhân lúc vắng người bèn thổ lộ nỗi lòng. Cô tỳ quả nhiên hoảng sợ, thẹn đỏ mặt bỏ chạy; Trương sinh hối hận. Hôm sau, cô tỳ lại đến; Trương sinh xấu hổ xin lỗi, không dám nhắc lại điều mong muốn nữa.",
+        "Cô tỳ nhân đó nói với chàng: “Lời của chàng, em không dám nói lại, cũng không dám tiết lộ ra. Nhưng họ hàng nhà họ Thôi thế nào, chàng đã rõ cả; sao không nhân ơn đức của mình mà xin cưới hỏi đàng hoàng?”",
+        "Trương sinh nói: “Ta từ thuở bé, tính không cẩu thả. Có lúc ở giữa đám lụa là son phấn, cũng chưa từng liếc mắt. Không ngờ đến nay lại bị che mờ lý trí. Hôm qua giữa bữa tiệc, ta suýt không tự chủ nổi. Mấy ngày nay đi quên cả dừng, ăn quên cả no, chỉ e không sống nổi qua sớm tối. Nếu nhờ mai mối mà cưới, nào nạp thái, nào vấn danh, thì ba bốn tháng nữa, có tìm ta cũng chỉ thấy trong hàng cá khô mà thôi. Em bảo ta phải làm sao?”",
+        "Cô tỳ đáp: “Cô Thôi giữ mình trinh tiết cẩn trọng, đến bậc bề trên cũng không dám đem lời bất chính xúc phạm, mưu kế của kẻ dưới như em lại càng khó lọt tai. Nhưng cô ấy giỏi văn chương, thường ngâm nga câu chữ, sầu nhớ vẩn vơ hồi lâu. Chàng thử làm thơ tỏ tình để lay động lòng cô ấy xem; ngoài ra thì không còn cách nào.”",
+        "Trương sinh mừng lắm, lập tức làm hai bài thơ xuân đưa cho Hồng Nương. Tối hôm ấy, Hồng Nương trở lại, cầm một tờ hoa tiên đưa cho chàng: “Cô Thôi bảo đưa cho chàng.” Bài thơ đề là “Đêm rằm trăng sáng”, lời rằng:",
+        "“Chờ trăng dưới mái Tây sương, / Gió lùa cánh cửa nửa chừng hé then. / Bóng hoa lay động bờ tường, / Ngỡ là người ngọc tìm đường sang đây.”",
+        "Trương sinh cũng lờ mờ hiểu ý thơ. Hôm ấy là ngày mười bốn tháng hai. Phía đông nhà họ Thôi có một cây hạnh, có thể bám vào mà trèo qua tường. Tối ngày mười sáu, Trương sinh bắc thang lên cây trèo sang, tới mái Tây sương thì cửa quả đang hé mở. Hồng Nương đang ngủ trên giường, chàng đánh thức cô dậy. Hồng Nương hoảng hốt: “Sao chàng lại tới đây?” Trương sinh dối rằng: “Thư của cô Thôi gọi ta đến, em vào báo giúp ta.” Chẳng bao lâu, Hồng Nương trở ra, luôn miệng nói: “Cô tới rồi! Cô tới rồi!” Trương sinh vừa mừng vừa sợ, chắc mẩm việc sẽ thành.",
+        "Đến khi cô Thôi tới thì áo quần nghiêm chỉnh, nét mặt nghiêm trang, kể tội chàng một hồi: “Ơn của anh cứu sống cả nhà em, thật là sâu nặng. Vì thế mẹ em mới gửi gắm đứa em trai nhỏ và đứa con gái non dại này cho anh. Cớ sao lại nhờ con tỳ hư hỏng đưa đến những lời lả lơi? Lúc đầu lấy việc bảo vệ người khỏi loạn làm nghĩa, rốt cuộc lại thừa cơ làm loạn để mưu cầu; như thế là lấy loạn thay loạn, khác nhau được bao nhiêu?",
+        "Em muốn lặng im bỏ qua lời anh, thì là che giấu điều sai của người, là bất nghĩa; muốn nói rõ với mẹ, thì là phụ ơn người, là chẳng lành; muốn nhờ tỳ nữ chuyển lời, lại sợ không bày tỏ được lòng thành. Vì thế em mới mượn bài thơ ngắn, mong tự mình nói rõ; lại sợ anh ngần ngại không đến, nên mới dùng lời lẽ ấy để chắc chắn anh sẽ tới. Việc làm trái lễ, lòng em sao khỏi hổ thẹn; chỉ mong anh lấy lễ giữ mình, đừng sa vào loạn.” Nói xong, nàng quay ngoắt bỏ đi. Trương sinh thẫn thờ hồi lâu, lại trèo tường trở về, từ đó tuyệt vọng."
+      ]
+    },
+    {
+      "title": "Phần 3: Đêm trăng tà",
+      "paras": [
+        "Mấy đêm sau, Trương sinh nằm ngủ một mình bên hiên, bỗng có người lay dậy. Chàng giật mình ngồi dậy, thì ra là Hồng Nương ôm chăn, cầm gối đến. Cô vỗ nhẹ chàng: “Tới rồi! Tới rồi! Còn ngủ làm gì nữa?” Rồi đặt gối, xếp chăn xong thì đi ra. Trương sinh dụi mắt ngồi ngay ngắn hồi lâu, còn ngờ là đang mơ, nhưng vẫn chỉnh tề chờ đợi.",
+        "Chốc lát, Hồng Nương dìu cô Thôi tới. Nàng e lệ dịu dàng, như không còn sức cử động tay chân, khác hẳn vẻ đoan trang hôm trước. Đêm ấy là ngày mười tám, trăng tà trong vắt, ánh sáng mờ dịu soi nửa giường. Trương sinh lâng lâng, ngờ là bậc thần tiên, không nghĩ là người từ trần gian tới.",
+        "Một lúc sau, chuông chùa đổ, trời sắp sáng, Hồng Nương giục về. Cô Thôi nức nở nghẹn ngào, Hồng Nương lại dìu nàng đi; suốt đêm nàng không nói một lời. Trời vừa hửng, Trương sinh đã dậy, tự hỏi: “Lẽ nào là mơ?” Đến khi sáng rõ, chàng nhìn thấy vết phấn còn trên cánh tay, hương còn vương trên áo, giọt lệ long lanh còn đọng trên chiếu.",
+        "Sau đó hơn mười ngày, bặt tin không biết gì nữa. Trương sinh làm bài “Hội chân thi” ba mươi vần, chưa xong thì Hồng Nương vừa tới, bèn trao cho cô để đưa cô Thôi. Từ đó nàng lại đón nhận chàng: sớm lén ra, tối lén vào, cùng nhau yên ổn nơi mái Tây sương ngày trước gần một tháng trời. Trương sinh thường hỏi xem ý bà Trịnh thế nào, nàng chỉ đáp: “Em cũng không biết làm sao.” Chàng bèn tính chuyện thành đôi."
+      ]
+    },
+    {
+      "title": "Phần 4: Khúc đàn chia ly",
+      "paras": [
+        "Chẳng bao lâu, Trương sinh sắp đi Trường An, trước đó đem tình ý nói cho nàng biết. Cô Thôi dịu dàng không nói lời nào làm khó, nhưng vẻ sầu muộn trên gương mặt khiến người ta xót xa. Hai đêm trước ngày đi, không được gặp lại nàng nữa, rồi Trương sinh lên đường về phía tây. Vài tháng sau, chàng lại đến đất Bồ, gặp gỡ cô Thôi thêm mấy tháng nữa.",
+        "Cô Thôi viết chữ rất đẹp, giỏi làm văn; Trương sinh xin xem đi xin xem lại, rốt cuộc vẫn không được thấy. Nhiều lần chàng tự làm văn để khơi gợi, nàng cũng chẳng mấy khi xem. Đại để chỗ hơn người của cô Thôi là: tài nghệ thì cực kỳ tinh thông mà dáng vẻ như chẳng biết gì; nói năng thì nhanh nhạy sắc sảo mà ít khi đối đáp. Đối với Trương sinh tình ý rất sâu nặng, nhưng chưa từng nói thành lời. Có lúc buồn bã u uất mà như không hay biết gì; vẻ vui hay giận cũng hiếm khi lộ ra mặt.",
+        "Có đêm nàng một mình gảy đàn, khúc nhạc buồn thương thê thiết; Trương sinh lén nghe, xin nàng đàn cho nghe thì nàng không chịu gảy nữa. Vì thế chàng càng say mê.",
+        "Không lâu sau, Trương sinh đến kỳ thi, lại phải đi về phía tây. Đêm trước ngày đi, chàng không nói gì về tình mình nữa, chỉ ngồi buồn rầu than thở bên cạnh nàng. Cô Thôi đã ngầm biết sắp phải chia tay, nét mặt cung kính, giọng nói hòa nhã, chậm rãi bảo chàng:",
+        "“Lúc đầu quyến rũ, sau rồi ruồng bỏ, vốn cũng là lẽ thường, em không dám oán hận. Nhất định phải là anh đã quyến rũ thì anh lo cho trọn, ấy là ơn của anh; và lời thề trọn đời cũng mới có kết cục. Vậy cần gì phải xúc động vì chuyến đi này? Nhưng anh đã không vui, em chẳng có gì làm anh yên lòng. Anh thường bảo em đàn hay, trước kia vì thẹn thùng mà em không đàn cho anh nghe được. Nay anh sắp đi rồi, em xin đàn để thỏa lòng anh.”",
+        "Nàng bèn sai lau đàn, gảy khúc dạo “Nghê thường vũ y”; chưa được mấy tiếng, âm điệu ai oán rối bời, không còn nhận ra là khúc nhạc gì nữa. Người xung quanh đều sụt sùi; cô Thôi cũng vội dừng tay, buông đàn, nước mắt tuôn rơi, bước nhanh về chỗ mẹ, rồi không trở lại nữa. Sáng hôm sau Trương sinh lên đường."
+      ]
+    },
+    {
+      "title": "Phần 5: Bức thư gửi kinh thành",
+      "paras": [
+        "Năm sau, Trương sinh thi không đỗ, bèn ở lại kinh thành, gửi thư cho cô Thôi để giãi bày tình ý. Thư trả lời của nàng, đại lược chép ra đây:",
+        "“Kính đọc thư anh hỏi han, thương yêu quá đỗi; tình nhi nữ, buồn vui lẫn lộn. Lại được anh gửi tặng một hộp hoa cài tóc, năm tấc son môi, để điểm tô mái tóc làn môi. Dẫu đội ơn đặc biệt, nhưng còn trang điểm cho ai? Nhìn vật càng thêm nhớ, chỉ chất chứa thêm buồn than mà thôi. Được biết anh ở lại kinh thành học hành, con đường tiến thủ vốn cần chốn yên ổn. Chỉ hận kẻ quê mùa hẻo lánh như em bị bỏ lại nơi xa mãi mãi; số mệnh đã vậy, còn biết nói gì?",
+        "Từ mùa thu năm ngoái đến nay, em thường bâng khuâng như mất mát điều gì. Giữa chốn ồn ào, có khi gắng gượng nói cười; đêm thanh một mình, chẳng lúc nào không rơi lệ. Đến cả trong giấc ngủ cũng thường nghẹn ngào. Nỗi sầu ly biệt quấn quýt triền miên, thoáng chốc như ngày thường; cuộc gặp gỡ trong mộng chưa tàn, hồn đã giật mình tỉnh giấc. Dẫu nửa chăn còn như ấm, mà người nhớ thì xa xôi lắm. Mới hôm nào lạy từ biệt, thoắt đã sang năm. Trường An là chốn vui chơi, bao điều khơi gợi tình cảm; may sao anh vẫn không quên kẻ hèn mọn này, nhớ thương không chán. Chí mọn của em chẳng có gì báo đáp. Còn như lời thề trước sau, thì em quyết không thay đổi.",
+        "Em với anh vốn là họ hàng, có lúc cùng dự tiệc; bị tỳ nữ dụ dỗ, rồi đến chỗ trao lòng riêng tư. Lòng con gái không tự giữ vững được. Anh có ngón đàn khơi tình như Tư Mã Tương Như, em lại không có sự cự tuyệt của người con gái ném thoi. Đến khi chung chăn gối, tình nghĩa sâu đậm, tấm lòng ngu muội của em vẫn tưởng sẽ được nương tựa trọn đời. Nào ngờ đã gặp được quân tử mà không thể định được duyên, khiến em mang nỗi hổ thẹn tự hiến thân, không còn được danh chính hầu hạ khăn lược. Mối hận đến chết, ngậm ngùi biết nói sao đây?",
+        "Nếu người có lòng nhân rủ lòng thành toàn tâm nguyện nhỏ nhoi này, thì dẫu ngày chết cũng như năm sống. Còn nếu bậc đạt sĩ coi nhẹ tình riêng, bỏ nhỏ theo lớn, coi việc kết hợp trước là xấu xa, coi lời thề nguyền là có thể lừa dối, thì dù xương tan thịt nát, tấm lòng son vẫn không mất; theo gió gửi sương, vẫn nương theo bụi trần nơi anh. Lòng thành sống chết, nói hết ở đây; cầm bút nghẹn ngào, tình không giãi bày hết được. Ngàn vạn lần bảo trọng! Bảo trọng ngàn vạn lần!",
+        "Một chiếc vòng ngọc, là món đồ em chơi thuở bé, gửi tặng anh để đeo bên mình. Ngọc là lấy ý bền chắc trơn bóng không đổi; vòng là lấy ý trước sau không dứt. Lại gửi kèm một con chỉ rối, một cái cối nghiền trà bằng trúc hoa văn. Mấy món này chẳng đáng quý gì, chỉ mong anh chân thật như ngọc, lòng em như vòng không cởi; vết lệ in trên trúc, mối sầu quấn như tơ; mượn vật để gửi tình, mãi mãi kết thân. Lòng gần mà thân xa, ngày gặp chưa biết bao giờ; nỗi u uất dồn nén, cách ngàn dặm mà hồn vẫn gặp nhau. Ngàn vạn lần bảo trọng! Gió xuân còn lạnh, anh gắng ăn uống cho khỏe. Cẩn thận lời nói, giữ gìn thân mình, đừng vì em mà bận lòng nhiều.”"
+      ]
+    },
+    {
+      "title": "Phần 6: Thương lấy người trước mắt",
+      "paras": [
+        "Trương sinh đem thư ấy cho bạn bè xem, vì thế người đương thời nhiều người biết chuyện. Người bạn thân là Dương Cự Nguyên giỏi làm thơ, nhân đó làm bài tuyệt cú “Thôi nương thi” rằng:",
+        "“Chàng Phan thanh tú, ngọc nào bằng, / Cỏ huệ sân trong tuyết mới tan. / Tài tử phong lưu nhiều mộng xuân, / Đứt ruột nàng Tiêu một tờ thư.”",
+        "Nguyên Chẩn ở Hà Nam cũng làm tiếp bài “Hội chân thi” ba mươi vần của Trương sinh. (Bài thơ dài tả cuộc hội ngộ của đôi lứa; bản dịch này lược đi.)",
+        "Bạn bè của Trương sinh nghe chuyện, ai cũng lấy làm kinh ngạc; nhưng ý chàng thì đã dứt. Chẩn vốn thân thiết với chàng, nên hỏi lý do. Trương sinh nói: “Phàm những người đẹp tuyệt trần mà trời sinh ra, nếu không làm hại chính mình thì ắt làm hại người khác. Giả sử cô Thôi gặp được người giàu sang, cậy được yêu chiều mà kiêu ngạo, thì chẳng làm mây, chẳng làm mưa, mà hóa thành giao long, thành thuồng luồng, ta không biết nàng sẽ biến hóa ra sao nữa. Ngày xưa vua Trụ nhà Ân, vua U nhà Chu nắm nước có trăm vạn người, thế lực rất lớn; vậy mà một người đàn bà làm cho bại vong, đến nay còn bị thiên hạ chê cười. Đức của ta không đủ để thắng yêu nghiệt, vì thế phải nén lòng mà dứt tình.” Lúc ấy những người ngồi đó đều thở dài.",
+        "Hơn một năm sau, cô Thôi đã lấy chồng, Trương sinh cũng đã cưới vợ. Một lần tình cờ đi qua nơi nàng ở, chàng nhờ chồng nàng nói lại, xin được gặp nàng với danh nghĩa anh họ. Người chồng nói với nàng, nhưng rốt cuộc nàng không ra. Nỗi oán nhớ của Trương sinh lộ cả ra nét mặt. Cô Thôi biết vậy, lén làm một bài thơ, lời rằng:",
+        "“Từ ngày gầy guộc kém dung nhan, / Trăn trở trăm chiều, biếng xuống giường. / Chẳng thẹn người ngoài nên chẳng dậy, / Vì chàng tiều tụy, thẹn cùng chàng.”",
+        "Rốt cuộc nàng vẫn không gặp. Mấy ngày sau, Trương sinh sắp đi, nàng lại làm một bài để từ biệt hẳn:",
+        "“Bỏ nhau rồi, nay còn nói chi, / Thuở ấy đã từng thân thiết nhau. / Xin đem tình ý ngày xưa ấy, / Thương lấy người đang ở trước mắt.”",
+        "Từ đó, hai người bặt tin nhau hẳn. Người đương thời phần nhiều khen Trương sinh là người khéo sửa lỗi. Tôi thường ở chỗ bạn bè hội họp, mỗi khi bàn đến chuyện này, là muốn cho người biết thì đừng làm, mà người đã làm thì đừng mê muội. Tháng chín năm Trinh Nguyên, quan chấp sự Lý Công Thùy nghỉ lại nhà tôi ở phường Tĩnh An, nói chuyện đến việc này. Công Thùy rất lấy làm lạ, bèn làm bài “Oanh Oanh ca” để lưu truyền. Cô Thôi tên tục là Oanh Oanh, Công Thùy lấy đó đặt tên bài."
+      ]
+    }
+  ],
+  "sourceRef": {
+    "book": "yingying"
+  }
+}

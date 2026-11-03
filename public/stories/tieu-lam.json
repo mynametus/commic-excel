@@ -1,0 +1,80 @@
+{
+  "id": "tieu-lam",
+  "title": "Tiếu lâm",
+  "titleZh": "笑林",
+  "author": "Hàm Đan Thuần",
+  "authorZh": "邯鄲淳",
+  "work": "Tiếu lâm (tập truyện cười cổ nhất Trung Hoa)",
+  "genre": "hai-huoc",
+  "era": "Thời Tam Quốc, thế kỷ 3",
+  "desc": "Tuyển 21 mẩu truyện cười từ “Tiếu lâm” — tập truyện cười được xem là cổ nhất Trung Hoa: anh nước Lỗ vác sào vào thành, chiếc lá tàng hình, chàng rể ngốc đi viếng… Ngắn, tếu, và vẫn đúng với ngày nay.",
+  "source": "https://zh.wikisource.org/wiki/%E7%AC%91%E6%9E%97",
+  "license": "Nguyên tác thuộc phạm vi công cộng (thế kỷ 3). Bản dịch tiếng Việt mới, dịch từ nguyên tác chữ Hán; lược bỏ một số mẩu có văn bản khuyết hoặc khó hiểu và các ghi chú xuất xứ.",
+  "translator": "Claude (AI) — bản dịch nháp, cần biên tập lại",
+  "chapters": [
+    {
+      "title": "Phần 1: Những người thông minh",
+      "paras": [
+        "1. Vác sào vào thành",
+        "Nước Lỗ có người cầm cây sào dài muốn vào cổng thành. Lúc đầu dựng đứng sào lên thì không vào được, cầm ngang ra thì cũng không vào được, nghĩ mãi không ra cách. Chốc lát có một ông lão đi tới, bảo: “Ta không phải bậc thánh nhân, nhưng việc đời thì đã thấy nhiều. Sao không lấy cưa cưa đôi cây sào ra rồi mang vào?” Người kia bèn theo lời mà cưa đôi cây sào.",
+        "2. Học đàn",
+        "Người nước Tề sang nước Triệu học đàn sắt. Thấy thầy đã chỉnh dây xong, anh ta bèn lấy keo gắn chặt các trụ đàn lại rồi mang về. Ba năm trời không gảy nổi một khúc nào. Người Tề lấy làm lạ. Có người từ nước Triệu sang, hỏi ra mới biết anh ta ngốc đến thế.",
+        "3. Chim phượng hoàng",
+        "Nước Sở có người gánh chim trĩ núi đi bán. Người qua đường hỏi: “Chim gì thế?” Người gánh lừa: “Phượng hoàng đấy!” Người qua đường nói: “Tôi nghe nói có phượng hoàng đã lâu, nay mới được tận mắt thấy. Anh có bán không?” “Bán chứ!” Người qua đường trả nghìn lạng vàng, anh ta không bán; xin trả gấp đôi, anh ta mới bán.",
+        "Người mua định đem dâng vua Sở, nhưng qua một đêm thì chim chết. Anh ta chẳng màng tiếc tiền, chỉ tiếc không được đem dâng vua. Người trong nước truyền tai nhau, ai cũng tin là phượng hoàng thật và anh ta đã định dâng vua; chuyện đến tai vua Sở. Vua cảm động vì anh ta có lòng muốn dâng mình, cho gọi đến ban thưởng hậu hĩnh, gấp mười lần số tiền đã bỏ ra mua “phượng hoàng”.",
+        "4. Chiếc lá tàng hình",
+        "Có người nước Sở nhà nghèo, đọc sách Hoài Nam Tử thấy chép: “Con bọ ngựa rình ve, lấy lá che mình thì có thể tàng hình.” Anh ta bèn đứng dưới gốc cây ngửa cổ tìm lá. Thấy con bọ ngựa đang nấp sau một chiếc lá rình ve, anh ta với tay hái, chiếc lá rơi xuống gốc cây. Dưới gốc vốn đã có sẵn lá rụng, không phân biệt được nữa, anh ta bèn quét luôn mấy đấu lá đem về.",
+        "Rồi anh lần lượt cầm từng chiếc lá che mình, hỏi vợ: “Mình có thấy tôi không?” Lúc đầu vợ cứ đáp “Thấy”. Suốt cả ngày như thế, vợ chán ngấy, bèn nói dối: “Không thấy.” Anh ta lặng thinh, mừng rỡ khôn xiết, cầm chiếc lá vào chợ, đứng ngay trước mặt người ta mà lấy đồ. Lính lệ bèn trói lại giải lên huyện. Quan huyện thẩm vấn, anh ta kể đầu đuôi sự tình. Quan cười phá lên, thả cho về, không trị tội.",
+        "5. Bắt chước người xướng lễ",
+        "Đời Hán, quan Tư đồ Thôi Liệt mời Bào Kiên người Thượng Đảng về làm thuộc lại. Sắp vào bái kiến, Bào Kiên lo mình không biết lễ, bèn hỏi người đến trước. Có người đáp: “Cứ theo lời người xướng lễ mà làm.” Khi vào bái kiến, người xướng lễ hô “Lạy”, Kiên cũng nói “Lạy”; người xướng lễ hô “Vào chỗ”, Kiên cũng nói “Vào chỗ”. Rồi Kiên đi nguyên giày lên ngồi chỗ trên. Lúc sắp rời tiệc, không biết giày ở đâu, người xướng lễ nói: “Giày ở dưới chân”, Kiên cũng nói: “Giày ở dưới chân.”",
+        "6. Chép luôn cả tên người khác",
+        "Đời vua Hoàn Đế có người xin thôi làm thuộc lại ở phủ quan, nhờ người viết hộ tờ trình. Người kia không viết được, bèn bảo: “Ông Cát Cung ở nước Lương xưa nay giỏi viết tờ trình, cứ chép bài của ông ấy mà dùng, khỏi phải viết lại.” Anh ta làm theo, chép nguyên bài văn, quên không xóa họ tên Cát Cung. Quan phủ xem xong giật mình, không trả lời gì cả. Vì thế người đương thời có câu: “Tờ trình dù khéo, nhớ bỏ Cát Cung.”",
+        "7. Đánh lửa",
+        "Có người ban đêm bỗng lên cơn bệnh gấp, sai học trò đánh lửa. Đêm ấy trời tối mịt, không đánh được lửa, ông ta giục rất gắt. Học trò bực mình nói: “Thầy trách con cũng vô lý quá! Trời tối như mực, sao thầy không cầm đuốc soi cho con? Con tìm được đồ đánh lửa thì mới dễ đánh chứ.” Khổng Văn Cử nghe chuyện nói: “Trách người thì phải trách cho đúng cách.”"
+      ]
+    },
+    {
+      "title": "Phần 2: Những người keo kiệt và đãng trí",
+      "paras": [
+        "8. Mấy quả mận",
+        "Ông Triệu Bá Công người béo phục phịch. Một ngày hè, ông say rượu nằm ngủ; đứa cháu nội mới mấy tuổi trèo lên bụng ông chơi, nhét tám chín quả mận vào lỗ rốn. Ông tỉnh dậy cũng chẳng hay biết gì. Mấy ngày sau thấy đau, mận nát ra, nước chảy ra ngoài, ông tưởng rốn mình bị thủng, sợ sắp chết, bèn gọi vợ con đến dặn dò việc nhà, khóc lóc bảo người nhà: “Ruột ta thối rồi, sắp chết đến nơi.” Hôm sau hạt mận rơi ra, gặng hỏi mới biết là mận đứa cháu nhét vào.",
+        "9. Ông nhà giàu keo kiệt",
+        "Đời Hán có ông già không con, nhà giàu mà tính keo kiệt: mặc áo xấu, ăn rau dưa, dậy từ tinh mơ, khuya khoắt mới nghỉ; lo làm ăn tích góp không biết chán, mà chẳng dám tiêu cho mình. Có người đến xin, bất đắc dĩ ông mới vào trong lấy mười đồng tiền; từ nhà trong đi ra, cứ mỗi bước lại bớt đi một ít, ra đến cửa chỉ còn một nửa; ông nhắm mắt đưa cho người xin. Rồi còn dặn: “Ta dốc hết cả nhà ra giúp anh đấy, chớ có nói với ai, kẻo người khác lại bắt chước kéo đến!” Chẳng bao lâu ông già chết, ruộng nhà bị sung công, của cải đều vào kho nhà vua.",
+        "10. Tấm vải thô",
+        "Thẩm Tuấn tự Thúc Sơn, có danh tiếng, nhưng tính keo kiệt. Trương Ôn đi sứ sang nước Thục, đến từ biệt Tuấn. Tuấn vào nhà trong hồi lâu, rồi ra nói với Ôn: “Vừa rồi tôi định chọn một tấm vải để tặng anh, mà tìm mãi không có tấm nào thô.” Ôn khen ông ta còn biết tự nói ra cái dở của mình. Lại có lần Tuấn đi qua bờ Thái Hồ, sai người hầu lấy nước muối; lấy xong lại tiếc là nhiều quá, bắt đem đổ bớt trả lại. Rồi cũng tự thẹn mà nói: “Đó là bản tính trời sinh của tôi!”",
+        "11. Măng tre",
+        "Có người đời Hán sang nước Ngô chơi, người Ngô dọn món măng mời ăn. Anh ta hỏi đó là gì, được trả lời: “Tre đấy!” Về nhà, anh ta đem tấm phản tre ra luộc mãi không chín, bèn bảo vợ: “Bọn người Ngô xảo trá, lừa ta đến thế!”",
+        "12. Cái nồi ba chân",
+        "Nhà một người ở Thái Nguyên ban đêm bị cháy. Lúc khuân đồ ra ngoài, định mang cái nồi đồng ba chân thì lại cầm nhầm cái bàn là. Anh ta hết sức kinh ngạc, bảo con: “Chuyện lạ thật! Lửa chưa cháy tới mà cái nồi đã bị cháy mất chân rồi!”",
+        "13. Nếm canh",
+        "Có người nấu canh, lấy muôi nếm thử, thấy nhạt bèn thêm muối. Sau đó lại nếm phần canh cũ còn trong muôi, nên vẫn bảo là thiếu muối. Cứ thế thêm muối mãi đến hơn một thăng, mà canh trong muôi vẫn không mặn, anh ta lấy làm lạ lắm.",
+        "14. Ngậm thịt",
+        "Anh Giáp mua thịt đi qua kinh thành, vào nhà xí, treo miếng thịt ở ngoài. Anh Ất lấy trộm, chưa kịp đi thì Giáp đi ra tìm thịt. Ất bèn ngậm luôn miếng thịt vào miệng mà nói: “Treo ngoài cửa thì làm sao không mất? Nếu như tôi ngậm thịt trong miệng thế này, có lẽ nào lại mất được.”"
+      ]
+    },
+    {
+      "title": "Phần 3: Những người ngốc nghếch",
+      "paras": [
+        "15. Chữa gù",
+        "Ở đất Bình Nguyên có người tự xưng giỏi chữa bệnh gù lưng, nói: “Trăm người mới có một người tôi chữa không khỏi thôi.” Có người gù lưng, đo cong thì tám thước, đo thẳng thì sáu thước, bèn đem nhiều tiền đến nhờ chữa. Thầy bảo: “Anh nằm sấp xuống.” Rồi định trèo lên lưng mà giẫm. Người gù kêu: “Ông giết tôi mất!” Thầy đáp: “Ta chỉ lo làm cho anh thẳng thôi, biết đâu đến chuyện sống chết.”",
+        "16. Khúc nhạc “Phụ tử — Đương quy”",
+        "Có anh làm chức tá lại trong phủ, việc gì cũng không hiểu. Mỗi lần hội họp có ca nhạc, anh ta đều dự; nhưng thẹn vì mình không biết gì, nên hễ ca kỹ tấu khúc nào, người ta khen thì anh ta cũng ngửa cổ khen theo. Một lần, các bạn đồng liêu bắt anh ta làm chủ tiệc, lo việc mời khách và gọi ca kỹ. Khách chưa đến đủ, anh ta gọi ca kỹ đến hỏi kỹ tên từng khúc nhạc, ghi lại từng khúc rồi cất dưới hộp khăn. Trong hộp vốn có sẵn một tờ đơn thuốc.",
+        "Khách đến đủ, mọi người hỏi nên tấu khúc gì, anh ta rút tờ giấy đã ghi ra, nhưng lại lấy nhầm tờ đơn thuốc. Thấy trên đó ghi “phụ tử ba phân, đương quy bốn phân”, anh ta liền nói: “Hãy tấu khúc Phụ tử — Đương quy để tiễn khách.” Cả tiệc cười lăn. (Phụ tử và đương quy là tên hai vị thuốc; “đương quy” còn có nghĩa là “nên về”.)",
+        "17. Ai giết Trần Tha?",
+        "Có anh Giáp muốn vào yết kiến quan huyện, hỏi người hầu: “Quan thích gì?” Có người bảo: “Thích sách Công Dương truyện.” Sau đó vào gặp, quan hỏi: “Anh đọc sách gì?” Đáp: “Chỉ chuyên học Công Dương truyện.” Quan thử hỏi: “Ai giết Trần Tha?” Giáp nghĩ hồi lâu rồi đáp: “Cả đời tôi thật chưa từng giết Trần Tha.”",
+        "Quan biết anh ta nhầm, bèn đùa thêm: “Anh không giết Trần Tha, vậy ai giết?” Giáp sợ quá, đi chân đất chạy ra. Người ta hỏi vì sao, anh ta nói to: “Vừa gặp quan, quan đã hỏi ngay đến án mạng. Từ nay tôi không dám đến nữa, đợi có lệnh ân xá mới dám ra đường.”",
+        "18. Cắn mũi",
+        "Anh Giáp đánh nhau với anh Ất, Giáp cắn đứt mũi Ất. Quan xử án, Giáp khai là Ất tự cắn đứt mũi mình. Quan nói: “Mũi người thì cao, miệng thì thấp, làm sao tự cắn được?” Giáp đáp: “Hắn đứng lên ghế mà cắn đấy ạ.”",
+        "19. Đi viếng đám tang",
+        "Mấy người quê mùa rủ nhau đi viếng đám tang, chẳng ai biết lễ nghi. Một người bảo mình có biết qua, dặn các bạn: “Cứ theo tôi mà làm.” Đến nhà tang, người “biết lễ” đi trước, phủ phục trên chiếu; những người còn lại lần lượt phủ phục phía sau. Người đi đầu lấy chân đá ra sau mà mắng: “Đồ ngốc!” Mọi người tưởng lễ nghi phải thế, cũng lần lượt lấy chân đá người sau mà nói: “Đồ ngốc!” Người cuối cùng nằm sát tang chủ, cũng đá luôn tang chủ mà nói: “Đồ ngốc!”",
+        "20. Chàng rể ngốc",
+        "Có chàng rể ngốc, bố vợ chết, vợ dạy cho cách làm lễ viếng. Dọc đường gặp suối, anh ta cởi tất lội qua, rồi để quên mất một chiếc. Lại nghe trong rừng có con chim cu gáy “cúc cu, cúc cu”, anh ta lẩm nhẩm học theo, quên sạch lễ viếng. Đến nơi, anh ta đứng một chân có tất, co chân trần lên, chỉ nói: “Cúc cu, cúc cu!” Con cháu nhà tang đều bật cười. Anh ta lại nói: “Đừng cười, đừng cười! Ai nhặt được chiếc tất thì trả lại cho tôi.”",
+        "21. Dê giẫm nát vườn rau",
+        "Có người quanh năm chỉ ăn rau dưa, bỗng một hôm được ăn thịt dê. Đêm ấy nằm mơ thấy thần ngũ tạng bảo: “Con dê giẫm nát vườn rau rồi!”"
+      ]
+    }
+  ],
+  "sourceRef": {
+    "book": "xiaolin"
+  }
+}

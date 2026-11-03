@@ -1,0 +1,787 @@
+{
+ "_ghi_chu": "Danh sách truyện cần dịch cho từng thể loại. 'book' = khóa nguồn trong data/zh, 'parts' = tiêu đề phần trong nguồn (để trống = lấy cả sách), 'split' = chia một nguồn dài thành nhiều truyện, mỗi truyện N đoạn. Tất cả nguồn đều là tác phẩm cổ thuộc phạm vi công cộng.",
+ "co-dai": [
+  {
+   "book": "liaozhai",
+   "parts": [
+    "考城隍"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "畫壁"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "偷桃"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "王六郎"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "屍變"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "畫皮"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "成仙"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "王成"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "葉生"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "三生"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "長清僧"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "狐嫁女"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "妖術"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "焦螟"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "賈兒"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "促織"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "席方平"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "夢狼"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "續黃粱"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "羅剎海市"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "田七郎"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "商三官"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "向杲"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "鬼哭"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "野狗"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "山魈"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "咬鬼"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "噴水"
+   ]
+  },
+  {
+   "book": "soushen",
+   "parts": [
+    "第一卷"
+   ]
+  },
+  {
+   "book": "soushen",
+   "parts": [
+    "第二卷"
+   ]
+  },
+  {
+   "book": "soushen",
+   "parts": [
+    "第三卷"
+   ]
+  },
+  {
+   "book": "soushen",
+   "parts": [
+    "第四卷"
+   ]
+  },
+  {
+   "book": "soushen",
+   "parts": [
+    "第五卷"
+   ]
+  },
+  {
+   "book": "soushen",
+   "parts": [
+    "第十一卷"
+   ]
+  },
+  {
+   "book": "soushen",
+   "parts": [
+    "第十二卷"
+   ]
+  },
+  {
+   "book": "soushen",
+   "parts": [
+    "第十四卷"
+   ]
+  },
+  {
+   "book": "soushen",
+   "parts": [
+    "第十六卷"
+   ]
+  },
+  {
+   "book": "soushen",
+   "parts": [
+    "第十八卷"
+   ]
+  },
+  {
+   "book": "soushen",
+   "parts": [
+    "第十九卷"
+   ]
+  },
+  {
+   "book": "soushen",
+   "parts": [
+    "第二十卷"
+   ]
+  },
+  {
+   "book": "dongzhou",
+   "title": "Đông Chu liệt quốc (hồi 1–10)",
+   "range": [
+    0,
+    10
+   ]
+  },
+  {
+   "book": "dongzhou",
+   "title": "Đông Chu liệt quốc (hồi 11–20)",
+   "range": [
+    10,
+    20
+   ]
+  },
+  {
+   "book": "dongzhou",
+   "title": "Đông Chu liệt quốc (hồi 21–28)",
+   "range": [
+    20,
+    28
+   ]
+  },
+  {
+   "book": "jingshi",
+   "parts": [
+    "第一卷 俞伯牙摔琴謝知音"
+   ]
+  },
+  {
+   "book": "jingshi",
+   "parts": [
+    "第三卷 王安石三難蘇學士"
+   ]
+  },
+  {
+   "book": "jingshi",
+   "parts": [
+    "第四卷 拗相公飲恨半山堂"
+   ]
+  },
+  {
+   "book": "yushi",
+   "parts": [
+    "第三十一卷 鬧陰司司馬貌斷獄"
+   ]
+  },
+  {
+   "book": "xingshi",
+   "parts": [
+    "第二十六卷 薛錄事魚服證仙"
+   ]
+  }
+ ],
+ "ngon-tinh": [
+  {
+   "book": "liaozhai",
+   "parts": [
+    "嬌娜"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "青鳳"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "嬰寧"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "聶小倩"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "蓮香"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "阿寶"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "連城"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "香玉"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "白秋練"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "王桂庵"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "青梅"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "紅玉"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "辛十四娘"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "巧娘"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "鳳仙"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "竹青"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "宦娘"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "阿纖"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "瑞雲"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "葛巾"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "黃英"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "晚霞"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "西湖主"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "花姑子"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "封三娘"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "細柳"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "胭脂"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "小謝"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "公孫九娘"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "魯公女"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "織成"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "嫦娥"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "阿繡"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "錦瑟"
+   ]
+  },
+  {
+   "book": "fusheng",
+   "title": "Phù sinh lục ký",
+   "range": [
+    0,
+    4
+   ]
+  },
+  {
+   "book": "xingshi",
+   "parts": [
+    "第三卷 賣油郎獨占花魁"
+   ]
+  },
+  {
+   "book": "xingshi",
+   "parts": [
+    "第四卷 灌園叟晚逢仙女"
+   ]
+  },
+  {
+   "book": "xingshi",
+   "parts": [
+    "第七卷 錢秀才錯占鳳凰儔"
+   ]
+  },
+  {
+   "book": "xingshi",
+   "parts": [
+    "第八卷 喬太守亂點鴛鴦譜"
+   ]
+  },
+  {
+   "book": "jingshi",
+   "parts": [
+    "第三十二卷 杜十娘怒沉百寶箱"
+   ]
+  },
+  {
+   "book": "jingshi",
+   "parts": [
+    "第二十四卷 玉堂春落難逢夫"
+   ]
+  },
+  {
+   "book": "jingshi",
+   "parts": [
+    "第二十八卷 白娘子永鎮雷峰塔"
+   ]
+  },
+  {
+   "book": "jingshi",
+   "parts": [
+    "第二十九卷 宿香亭張浩遇鶯鶯"
+   ]
+  },
+  {
+   "book": "yushi",
+   "parts": [
+    "第一卷 蔣興哥重會珍珠衫"
+   ]
+  },
+  {
+   "book": "yushi",
+   "parts": [
+    "第二卷 陳御史巧勘金釵鈿"
+   ]
+  },
+  {
+   "book": "yushi",
+   "parts": [
+    "第四卷 閒云年庵阮三冤債"
+   ]
+  },
+  {
+   "book": "yushi",
+   "parts": [
+    "第二十三卷 張舜美燈宵得麗女"
+   ]
+  }
+ ],
+ "hai-huoc": [
+  {
+   "book": "xiaozan",
+   "title": "Tiếu tán (tập 1)",
+   "split": 20,
+   "index": 0
+  },
+  {
+   "book": "xiaozan",
+   "title": "Tiếu tán (tập 2)",
+   "split": 20,
+   "index": 1
+  },
+  {
+   "book": "xiaozan",
+   "title": "Tiếu tán (tập 3)",
+   "split": 20,
+   "index": 2
+  },
+  {
+   "book": "xiaozan",
+   "title": "Tiếu tán (tập 4)",
+   "split": 20,
+   "index": 3
+  },
+  {
+   "book": "xiaozan",
+   "title": "Tiếu tán (tập 5)",
+   "split": 20,
+   "index": 4
+  },
+  {
+   "book": "xiaozan",
+   "title": "Tiếu tán (tập 6)",
+   "split": 20,
+   "index": 5
+  },
+  {
+   "book": "xiaozan",
+   "title": "Tiếu tán (tập 7)",
+   "split": 20,
+   "index": 6
+  },
+  {
+   "book": "xiaozan",
+   "title": "Tiếu tán (tập 8)",
+   "split": 20,
+   "index": 7
+  },
+  {
+   "book": "xiaozan",
+   "title": "Tiếu tán (tập 9)",
+   "split": 20,
+   "index": 8
+  },
+  {
+   "book": "xiaozan",
+   "title": "Tiếu tán (tập 10)",
+   "split": 20,
+   "index": 9
+  },
+  {
+   "book": "xiaozan",
+   "title": "Tiếu tán (tập 11)",
+   "split": 20,
+   "index": 10
+  },
+  {
+   "book": "xiaozan",
+   "title": "Tiếu tán (tập 12)",
+   "split": 20,
+   "index": 11
+  },
+  {
+   "book": "rulin",
+   "title": "Nho lâm ngoại sử (phần 1)",
+   "range": [
+    0,
+    10
+   ]
+  },
+  {
+   "book": "rulin",
+   "title": "Nho lâm ngoại sử (phần 2)",
+   "range": [
+    10,
+    20
+   ]
+  },
+  {
+   "book": "rulin",
+   "title": "Nho lâm ngoại sử (phần 3)",
+   "range": [
+    20,
+    30
+   ]
+  },
+  {
+   "book": "rulin",
+   "title": "Nho lâm ngoại sử (phần 4)",
+   "range": [
+    30,
+    38
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "小翠"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "狐諧"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "嘉平公子"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "沂水秀才"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "司文郎"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "賈奉雉"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "鴝鵒"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "鴞鳥"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "顛道人"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "韓方"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "狐聯"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "罵鴨"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "雨錢"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "武技"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "某乙"
+   ]
+  },
+  {
+   "book": "liaozhai",
+   "parts": [
+    "郭生"
+   ]
+  }
+ ]
+}

@@ -3,3 +3,5 @@ node_modules/
 *.log
 .DS_Store
 Thumbs.db
+# nguồn tải về & tiến độ dịch (tạo lại bằng scripts/fetch-sources.js)
+data/

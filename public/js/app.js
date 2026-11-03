@@ -4,7 +4,30 @@
 (function () {
   'use strict';
 
-  const LIB = window.STORY_LIB;
+  // Thư viện tĩnh: public/stories/index.json (tạo bởi scripts/build-library.js)
+  const DEFAULT_GENRES = [
+    { id: 'co-dai', name: 'Cổ đại', color: '#C0504D' }, { id: 'hai-huoc', name: 'Hài hước', color: '#ED7D31' },
+    { id: 'ngon-tinh', name: 'Ngôn tình', color: '#E05C9B' }, { id: 'van-hoc-vn', name: 'Văn học VN', color: '#4472C4' }
+  ];
+  let LIB = { genres: DEFAULT_GENRES, stories: [] };
+  async function loadLibrary() {
+    try {
+      const r = await fetch('stories/index.json', { cache: 'no-cache' });
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      const j = await r.json();
+      const genres = j.genres && j.genres.length ? j.genres : DEFAULT_GENRES;
+      const gname = Object.fromEntries(genres.map(g => [g.id, g.name]));
+      LIB = {
+        genres,
+        stories: j.stories.map(s => Object.assign({}, s, {
+          genreName: gname[s.genre] || s.genre,
+          transShort: /AI|Claude/i.test(s.translator || '') ? 'Dịch máy (AI)' : (s.translator || 'Nguyên bản tiếng Việt')
+        }))
+      };
+    } catch (e) {
+      setTimeout(() => toast('Không tải được thư viện (stories/index.json): ' + e.message, 'err'), 0);
+    }
+  }
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => Array.from(el.querySelectorAll(s));
   const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
@@ -81,8 +104,9 @@
   function libBook(st) {
     return {
       key: 'lib:' + st.id, src: 'lib', story: st, title: st.title, author: st.author, genre: st.genreName,
-      status: st.status, views: st.views, rating: st.rating, desc: st.desc, url: null, nextUrl: null,
-      chapters: LIB.chapterTitles(st).map(t => ({ title: t, paras: null, state: 'idle' }))
+      titleZh: st.titleZh, work: st.work, era: st.era, translator: st.translator, license: st.license,
+      desc: st.desc, url: st.source || null, nextUrl: null,
+      chapters: st.chapterTitles.map(t => ({ title: t, paras: null, state: 'idle' }))
     };
   }
   function chapterSheetName(book, ch, i, used) {
@@ -113,11 +137,19 @@
   function ensureChapter(book, i) {
     const ch = book.chapters[i];
     if (!ch || ch.paras) return;
-    if (book.src !== 'web') { // lib + văn bản dán
-      const data = LIB.getChapter(book.story, i);
-      ch.paras = data.paras; ch.state = 'done';
+    if (book.src === 'lib') { // tải cả file truyện một lần, điền vào mọi chương
+      if (S.dry || book.loading) return;
+      book.loading = true;
+      book.chapters.forEach(c => { if (!c.paras) { c.state = 'loading'; c.err = null; } });
+      const p = fetch('stories/' + encodeURIComponent(book.story.id) + '.json')
+        .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+        .then(d => d.chapters.forEach((c, k) => { const t = book.chapters[k]; if (t) { t.paras = c.paras; t.title = c.title; t.state = 'done'; } }))
+        .catch(e => book.chapters.forEach(c => { if (!c.paras) { c.state = 'error'; c.err = 'Không tải được nội dung truyện: ' + e.message; } }))
+        .finally(() => { book.loading = false; onChapterLoaded(book); });
+      book.chapters.forEach(c => { c._p = p; });
       return;
     }
+    if (book.src !== 'web') return; // văn bản dán: đã có sẵn nội dung
     if (S.dry || ch.state === 'loading') return;
     ch.state = 'loading'; ch.err = null;
     ch._p = apiImport(ch.url).then(r => {
@@ -163,14 +195,14 @@
 
   const LCOLS = [
     { k: 'idx', label: 'STT', w: 48, num: true },
-    { k: 'title', label: 'Tên truyện', w: 290 },
-    { k: 'author', label: 'Tác giả', w: 150 },
-    { k: 'genreName', label: 'Thể loại', w: 92, en: true },
-    { k: 'chapters', label: 'Số chương', w: 88, num: true },
-    { k: 'status', label: 'Trạng thái', w: 108, en: true },
-    { k: 'views', label: 'Lượt đọc', w: 132, num: true },
-    { k: 'rating', label: 'Đánh giá', w: 92, num: true },
-    { k: 'updated', label: 'Cập nhật', w: 98, date: true },
+    { k: 'title', label: 'Tên truyện', w: 250 },
+    { k: 'titleZh', label: 'Tên gốc', w: 110 },
+    { k: 'author', label: 'Tác giả', w: 130, en: true },
+    { k: 'work', label: 'Tác phẩm / Tuyển tập', w: 180, en: true },
+    { k: 'genreName', label: 'Thể loại', w: 100, en: true },
+    { k: 'chapters', label: 'Số chương', w: 86, num: true },
+    { k: 'words', label: 'Độ dài (chữ)', w: 128, num: true },
+    { k: 'transShort', label: 'Bản dịch', w: 150, en: true },
     { k: 'desc', label: 'Mô tả', w: 560 }
   ];
   const getFilt = key => (S.filt[key] = S.filt[key] || { sort: null, q: {}, sel: {} });
@@ -200,11 +232,12 @@
   function modelLibrary(sh) {
     const f = getFilt(sh.key);
     const all = baseList(sh), list = filteredList(sh);
-    const maxViews = Math.max(...all.map(s => s.views));
+    const maxWords = Math.max(1, ...all.map(s => s.words || 0));
     const rows = [];
     const label = sh.genre ? sh.name.toUpperCase() : 'TẤT CẢ THỂ LOẠI';
     rows[0] = { cells: [C(0, 'THƯ VIỆN TRUYỆN — ' + label, { cs: 10, cls: 'title', html: '<b>THƯ VIỆN TRUYỆN</b> — ' + esc(label) })] };
-    rows[1] = { cells: [C(0, `Hiển thị ${list.length}/${all.length} truyện · Bấm vào tên truyện (chữ xanh) để đọc · Bấm ▾ ở tiêu đề cột để sắp xếp/lọc · Ctrl+F để tìm`, { cs: 10, cls: 'note' })] };
+    rows[1] = { cells: [C(0, `Hiển thị ${list.length}/${all.length} truyện · Truyện cổ Trung Hoa dịch từ nguyên tác & văn học Việt Nam đã hết bảo hộ bản quyền · Bấm tên truyện (chữ xanh) để đọc · ▾ để sắp xếp/lọc`, { cs: 10, cls: 'note' })] };
+    if (!all.length) rows[2] = { cells: [C(0, 'Chưa có truyện trong thể loại này — chạy scripts/translate.js rồi scripts/build-library.js để bổ sung.', { cs: 10, cls: 'neutral' })] };
     rows[3] = {
       cells: LCOLS.map((col, i) => C(i, col.label, {
         cls: 'th',
@@ -213,32 +246,29 @@
     };
     list.forEach((s, i) => {
       const b = i % 2 ? ' b' : '';
-      const ic = s.rating >= 4.5 ? 'up' : s.rating >= 4.0 ? 'side' : 'down';
+      const ai = s.transShort === 'Dịch máy (AI)';
       rows.push({
         cells: [
           C(0, s.idx, { cls: 'num' + b }),
           C(1, s.title, { cls: 'link' + b, act: 'open:' + s.id, f: `=HYPERLINK("#${s.id}";"${s.title}")` }),
-          C(2, s.author, { cls: b }),
-          C(3, s.genreName, { cls: b }),
-          C(4, s.chapters, { cls: 'num' + b }),
-          C(5, s.status, { cls: s.status === 'Hoàn thành' ? 'good' : 'neutral' }),
-          C(6, s.views, { cls: 'num databar' + b, html: `<span class="dbar" style="--p:${(s.views / maxViews).toFixed(3)}"></span><span class="dv">${fmtNum(s.views)}</span>` }),
-          C(7, s.rating.toFixed(1), { cls: 'num' + b, html: `<span class="ico ${ic}"></span>${s.rating.toFixed(1).replace('.', ',')}` }),
-          C(8, s.updatedText, { cls: 'num' + b }),
+          C(2, s.titleZh, { cls: b }),
+          C(3, s.author, { cls: b }),
+          C(4, s.work, { cls: b }),
+          C(5, s.genreName, { cls: b }),
+          C(6, s.chapters, { cls: 'num' + b }),
+          C(7, s.words, { cls: 'num databar' + b, html: `<span class="dbar" style="--p:${((s.words || 0) / maxWords).toFixed(3)}"></span><span class="dv">${fmtNum(s.words || 0)}</span>` }),
+          C(8, s.transShort, { cls: ai ? 'neutral' : 'good', f: s.translator || s.transShort }),
           C(9, s.desc, { cls: b })
         ]
       });
     });
     const r0 = 5, r1 = 4 + list.length;
-    const sumCh = list.reduce((a, s) => a + s.chapters, 0), sumV = list.reduce((a, s) => a + s.views, 0);
-    const avg = list.length ? list.reduce((a, s) => a + s.rating, 0) / list.length : 0;
+    const sumCh = list.reduce((a, s) => a + s.chapters, 0), sumW = list.reduce((a, s) => a + (s.words || 0), 0);
     rows.push({
       cells: [
-        C(0, 'Tổng', { cls: 'tot', cs: 4 }),
-        C(4, sumCh, { cls: 'tot num', f: `=SUBTOTAL(109;E${r0}:E${r1})` }),
-        C(5, '', { cls: 'tot' }),
-        C(6, fmtNum(sumV), { cls: 'tot num', f: `=SUBTOTAL(109;G${r0}:G${r1})` }),
-        C(7, avg.toFixed(2).replace('.', ','), { cls: 'tot num', f: `=SUBTOTAL(101;H${r0}:H${r1})` }),
+        C(0, 'Tổng', { cls: 'tot', cs: 6 }),
+        C(6, sumCh, { cls: 'tot num', f: `=SUBTOTAL(109;G${r0}:G${r1})` }),
+        C(7, fmtNum(sumW), { cls: 'tot num', f: `=SUBTOTAL(109;H${r0}:H${r1})` }),
         C(8, '', { cls: 'tot' }), C(9, '', { cls: 'tot' })
       ]
     });
@@ -319,12 +349,12 @@
     rows[0] = { cells: [C(1, b.title, { cs: 5, cls: 'title', html: '<b>' + esc(b.title) + '</b>' })] };
     rows[1] = { cells: [C(1, [b.author, b.genre].filter(Boolean).join(' · ') || 'Truyện nhập', { cs: 4, cls: 'note' }), C(5, '⌂ Về thư viện', { cls: 'link right', act: 'lib' })] };
     const props = [
-      ['Tác giả', b.author], ['Thể loại', b.genre],
+      ['Tên gốc', b.titleZh], ['Tác giả', b.author], ['Tác phẩm', b.work], ['Thể loại', b.genre], ['Thời đại', b.era],
       ['Số chương', b.chapters.length + (b.totalFound && b.totalFound > b.chapters.length ? ` (đã tạo sheet; tìm thấy ${b.totalFound})` : '') + (b.nextUrl ? ' (còn chương tiếp)' : '')],
-      ['Trạng thái', b.status], ['Lượt đọc', b.views ? fmtNum(b.views) : ''], ['Đánh giá', b.rating ? b.rating.toFixed(1).replace('.', ',') + ' / 5' : '']
+      ['Bản dịch', b.translator], ['Bản quyền', b.license]
     ].filter(p => p[1]);
     let r = 3;
-    props.forEach(([k, v]) => { rows[r++] = { cells: [C(1, k, { cls: 'lbl' }), C(2, v, { cs: 3, cls: k === 'Trạng thái' ? (v === 'Hoàn thành' ? 'good' : 'neutral') : '' })] }; });
+    props.forEach(([k, v]) => { rows[r++] = { cells: [C(1, k, { cls: 'lbl' }), C(2, v, { cs: 3, cls: k === 'Bản quyền' || k === 'Bản dịch' ? 'wrap' : '' })] }; });
     if (b.url) rows[r++] = { cells: [C(1, 'Nguồn', { cls: 'lbl' }), C(2, b.url, { cs: 3, cls: 'link', act: 'url' })] };
     if (b.desc) rows[r++] = { cells: [C(1, 'Giới thiệu', { cls: 'lbl' }), C(2, b.desc, { cs: 3, cls: 'wrap' })] };
     r++;
@@ -626,7 +656,10 @@
   function resume(i) {
     const e = getHist()[i];
     if (!e) return;
-    if (e.src === 'lib') return openLib(e.libId, e.ch);
+    if (e.src === 'lib') {
+      if (!LIB.stories.some(s => s.id === e.libId)) { toast('Truyện này không còn trong thư viện', 'err'); return; }
+      return openLib(e.libId, e.ch);
+    }
     const existing = W.list.find(w => w.book && w.book.key === e.key);
     if (existing) return openBook(existing.book, e.ch);
     if (e.bookKind === 'toc') runImport(e.bookUrl, { key: e.key, jump: e.ch, mode: 'toc', max: Math.max(e.total, 20) });
@@ -818,7 +851,7 @@
       if (wb.kind === 'library') {
         wb.sheets.filter(s => s.kind === 'library').forEach(sh => {
           const list = filteredList(sh);
-          add(sh.name, [LCOLS.map(c => c.label)].concat(list.map(s => [s.idx, s.title, s.author, s.genreName, s.chapters, s.status, s.views, s.rating, s.updatedText, s.desc])),
+          add(sh.name, [LCOLS.map(c => c.label)].concat(list.map(s => LCOLS.map(c => s[c.k] == null ? '' : s[c.k]))),
             LCOLS.map(c => ({ wch: Math.round(c.w / 7) })));
         });
       } else if (wb.kind === 'story') {
@@ -1234,9 +1267,9 @@
         return showMenu(el, [
           { label: 'Sắp xếp tên truyện A → Z', fn: () => runCmd('sortAZ') },
           { label: 'Sắp xếp tên truyện Z → A', fn: () => runCmd('sortZA') },
-          { label: 'Lượt đọc cao nhất', fn: () => sortBy('views', -1) },
-          { label: 'Đánh giá cao nhất', fn: () => sortBy('rating', -1) },
-          { label: 'Mới cập nhật', fn: () => sortBy('updated', -1) },
+          { label: 'Dài nhất', fn: () => sortBy('words', -1) },
+          { label: 'Ngắn nhất', fn: () => sortBy('words', 1) },
+          { label: 'Nhiều chương nhất', fn: () => sortBy('chapters', -1) },
           '-', { label: 'Xóa sắp xếp & bộ lọc', fn: () => runCmd('clearFilter') }
         ]);
       case 'sortAZ': return sortBy('title', 1);
@@ -1280,7 +1313,7 @@
   }
   function showAbout() {
     modal('Giới thiệu', `<p><b>Excel Story Reader</b> — đọc truyện trong giao diện bảng tính.</p>
-      <p>• Thư viện mẫu: ${LIB.stories.length} truyện (${LIB.genres.map(g => g.name).join(', ')}), nội dung được sinh tự động để minh họa.<br>
+      <p>• Thư viện: ${LIB.stories.length} truyện (${LIB.genres.map(g => g.name).join(', ')}). Truyện cổ Trung Hoa thuộc phạm vi công cộng, dịch từ nguyên tác chữ Hán (bản dịch máy, cần biên tập); văn học Việt Nam đã hết bảo hộ lấy từ Wikisource.<br>
       • Mỗi chương là một sheet. Nhập truyện khác bằng link ở sheet <b>Nhập link</b>.<br>
       • Xuất ra file .xlsx thật bằng Ctrl+S.</p>
       <p class="muted-s">Bản nháp / dự án cá nhân. Hãy tôn trọng bản quyền của tác giả và trang nguồn khi nhập truyện.</p>`);
@@ -1324,7 +1357,7 @@
     const nq = norm(q);
     tsItems = [];
     if (/^https?:\/\/|^www\.|\.[a-z]{2,}\//i.test(q)) tsItems.push({ label: '⤓ Nhập truyện từ link này', sub: q, fn: () => { S.imp.url = q; goLibrary('import'); runImport(q); } });
-    LIB.stories.filter(s => norm(s.title).includes(nq) || norm(s.author).includes(nq)).slice(0, 12)
+    LIB.stories.filter(s => norm(s.title).includes(nq) || norm(s.author).includes(nq) || (s.titleZh || '').includes(q)).slice(0, 12)
       .forEach(s => tsItems.push({ label: s.title, sub: s.genreName + ' · ' + s.author, fn: () => openLib(s.id) }));
     tsItems.push({ label: `🔍 Tìm “${q}” trong sổ làm việc hiện tại`, fn: () => { openFind(q); doFindAll(); } });
     tsPos = tsItems.length > 1 ? 0 : -1;
@@ -1561,8 +1594,11 @@
   }
 
   /* ------------------------------ Khởi động ------------------------------ */
-  function init() {
+  async function init() {
     $$('#titlebar .qat').forEach(b => { b.innerHTML = ICON[b.dataset.ic || 'save']; });
+    setStatus('Đang tải thư viện…');
+    await loadLibrary();
+    setStatus(null);
     W.list.push(libraryWorkbook());
     W.boss = bossWorkbook();
     const lastTab = store.get('libTab', 1);
