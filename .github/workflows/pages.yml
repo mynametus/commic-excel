@@ -29,7 +29,8 @@ jobs:
           node-version: 20
       - name: Kiểm tra cú pháp
         run: |
-          node --check server.js
+          node --check lib/core.js
+          node --check scripts/serve.js
           node --check api/import.js
           node --check public/js/app.js
           node --check public/js/data.js

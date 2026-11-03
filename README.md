@@ -45,12 +45,14 @@ Sheet **Nhập link** → dán URL → **▶ Nhập**:
 - **Trang chương**: lấy nội dung chương rồi đi theo link “Chương sau” cho tới số chương tối đa đã chọn.
 - **Dán văn bản**: dùng khi trang chặn tải tự động; các dòng “Chương N” được tách thành từng sheet.
 
-Phía server (`server.js`) tải trang giúp trình duyệt (để tránh chặn CORS), chặn địa chỉ nội bộ (chống SSRF), giới hạn 5 MB mỗi trang, chờ tối đa 15 giây, lưu tạm kết quả 10 phút; giữa các lần tải chương có nghỉ khoảng 0,4 giây.
+Phía server (`lib/core.js`) tải trang giúp trình duyệt (để tránh chặn CORS), chặn địa chỉ nội bộ (chống SSRF), giới hạn 5 MB mỗi trang, chờ tối đa 15 giây, lưu tạm kết quả 10 phút; giữa các lần tải chương có nghỉ khoảng 0,4 giây.
 
 ## Cấu trúc
 
 ```
-server.js              máy chủ tĩnh + API /api/import
+lib/core.js            lõi nhập truyện (trích xuất nội dung, chặn SSRF, cache)
+scripts/serve.js       máy chủ chạy trên máy (npm start)
+api/import.js          Vercel Serverless Function /api/import
 public/index.html      khung giao diện
 public/css/excel.css   giao diện giống Excel (sáng/tối)
 public/js/data.js      thư viện mẫu 150 truyện (nội dung sinh tự động)
