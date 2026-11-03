@@ -216,6 +216,12 @@ body.boldread .grid td.para { font-weight: 600; }
 :root[data-theme="dark"] .tab.active { color: #8FE0AE; }
 .tab.active::before { bottom: auto; top: 0; height: 2px; border-radius: 0; left: 0; right: 0; }
 .tab.loading { color: var(--ui-muted); font-style: italic; }
+#libtab {
+  flex: none; border: 0; border-right: 1px solid var(--ui-border); padding: 0 12px; font-size: 12.5px; font-weight: 600;
+  background: var(--xl-l); color: var(--xl); white-space: nowrap;
+}
+:root[data-theme="dark"] #libtab { color: #8FE0AE; }
+#libtab:hover { background: var(--xl); color: #fff; }
 #addsheet { width: 30px; border: 0; background: none; font-size: 18px; color: var(--ui-muted); }
 #addsheet:hover { color: var(--xl); background: var(--ui-hover); }
 .tab-fill { flex: 1; }

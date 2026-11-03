@@ -317,7 +317,7 @@
     const b = wb.book, rows = [];
     const hist = histOf(b.key);
     rows[0] = { cells: [C(1, b.title, { cs: 5, cls: 'title', html: '<b>' + esc(b.title) + '</b>' })] };
-    rows[1] = { cells: [C(1, [b.author, b.genre].filter(Boolean).join(' · ') || 'Truyện nhập', { cs: 5, cls: 'note' })] };
+    rows[1] = { cells: [C(1, [b.author, b.genre].filter(Boolean).join(' · ') || 'Truyện nhập', { cs: 4, cls: 'note' }), C(5, '⌂ Về thư viện', { cls: 'link right', act: 'lib' })] };
     const props = [
       ['Tác giả', b.author], ['Thể loại', b.genre],
       ['Số chương', b.chapters.length + (b.totalFound && b.totalFound > b.chapters.length ? ` (đã tạo sheet; tìm thấy ${b.totalFound})` : '') + (b.nextUrl ? ' (còn chương tiếp)' : '')],
@@ -355,7 +355,8 @@
     return {
       h: 26, cells: [
         C(1, '◀ Chương trước', { cs: 2, cls: (i > 0 ? 'link' : 'muted') + ' navcell', act: i > 0 ? 'sheet:' + i : null }),
-        C(4, '☰ Mục lục', { cs: 2, cls: 'link center navcell', act: 'sheet:0' }),
+        C(3, '☰ Mục lục', { cs: 2, cls: 'link center navcell', act: 'sheet:0' }),
+        C(5, '⌂ Thư viện', { cs: 2, cls: 'link center navcell', act: 'lib' }),
         C(7, hasNext ? 'Chương sau ▶' : canMore ? 'Tải chương sau ▶' : 'Hết', { cs: 3, cls: (hasNext || canMore ? 'link' : 'muted') + ' right navcell', act: hasNext ? 'sheet:' + (i + 2) : canMore ? 'more' : null })
       ]
     };
@@ -490,6 +491,7 @@
   function renderTabs() {
     const wb = curWb();
     const tabs = $('#tabs');
+    $('#libtab').classList.toggle('hidden', wb.kind !== 'story');
     tabs.innerHTML = wb.sheets.map((s, i) => {
       const loading = s.kind === 'reader' && wb.book && wb.book.chapters[s.ch].state === 'loading';
       return `<button class="tab${i === wb.active ? ' active' : ''}${loading ? ' loading' : ''}" data-i="${i}"${s.color ? ` style="--tab:${s.color}"` : ''} title="${esc(s.kind === 'reader' ? wb.book.chapters[s.ch].title : s.name)}">${esc(s.name)}</button>`;
@@ -644,6 +646,7 @@
       case 'more': { const b = curWb().book; if (b && b.nextUrl) loadMore(b, 1, true); return; }
       case 'retry': { const b = curWb().book; const ch = b.chapters[+arg]; ch.state = 'idle'; ch.err = null; renderSheet(); return; }
       case 'export': return exportXlsx();
+      case 'lib': return goLibrary();
       case 'url': { const b = curWb().book; if (b && b.url) window.open(b.url, '_blank', 'noopener'); return; }
       case 'clearHist': store.set('history', []); renderSheet(); toast('Đã xóa lịch sử đọc'); return;
     }
@@ -1403,6 +1406,7 @@
       if (n.dataset.nav === 'next') tabs.scrollBy({ left: 240, behavior: 'smooth' });
       if (n.dataset.nav === 'list') { const wb = curWb(); showMenu(n, wb.sheets.map((s, i) => ({ label: s.name, sub: s.kind === 'reader' ? wb.book.chapters[s.ch].title : '', on: i === wb.active, fn: () => activateSheet(i) })), true); }
     });
+    $('#libtab').addEventListener('click', () => goLibrary());
     $('#addsheet').addEventListener('click', () => {
       const wb = curWb();
       if (wb.kind === 'story' && wb.book.nextUrl) return loadMore(wb.book, 1, true);
