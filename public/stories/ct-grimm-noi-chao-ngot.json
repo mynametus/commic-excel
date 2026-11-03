@@ -1,0 +1,28 @@
+{
+  "id": "ct-grimm-noi-chao-ngot",
+  "title": "Nồi cháo ngọt",
+  "titleOrig": "Der süße Brei",
+  "author": "Anh em Grimm",
+  "authorOrig": "Brüder Grimm",
+  "work": "Truyện cổ Grimm",
+  "genre": "co-tich",
+  "country": "Đức",
+  "era": "Thế kỷ 19",
+  "desc": "Hai mẹ con nghèo đói được một bà cụ trong rừng tặng chiếc nồi nhỏ biết tự nấu cháo ngọt theo câu thần chú. Nhưng muốn nồi dừng lại thì phải nhớ đúng lời.",
+  "source": "https://www.gutenberg.org/ebooks/5314",
+  "license": "Nguyên tác thuộc phạm vi công cộng (tác giả mất năm 1859 và 1863). Bản dịch tiếng Việt mới, dịch từ bản tiếng Anh của Margaret Hunt, 1884 (phạm vi công cộng), do Gutenberg không có văn bản tiếng Đức của truyện này.",
+  "translator": "Claude (AI) — bản dịch nháp, cần biên tập lại",
+  "sourceRef": {
+    "gutenberg": 5314,
+    "lang": "en",
+    "part": "Sweet Porridge"
+  },
+  "chapters": [
+    {
+      "title": "Nồi cháo ngọt",
+      "paras": [
+        "Có một cô bé nghèo nhưng ngoan sống một mình với mẹ, và hai mẹ con chẳng còn gì để ăn nữa. Cô bé bèn đi vào rừng, ở đó em gặp một bà cụ, bà biết nỗi khổ của em nên tặng em một chiếc nồi nhỏ: hễ em nói “Nấu đi, nồi nhỏ, nấu đi” là nồi sẽ nấu ra món cháo ngọt thơm ngon, còn khi em nói “Dừng lại, nồi nhỏ” là nồi thôi không nấu nữa. Cô bé mang chiếc nồi về nhà cho mẹ, từ đó hai mẹ con thoát khỏi cảnh nghèo đói, muốn ăn cháo ngọt bao nhiêu lần cũng được. Một lần, khi cô bé đi vắng, người mẹ nói: “Nấu đi, nồi nhỏ, nấu đi.” Nồi liền nấu, bà ăn cho đến khi no nê, rồi bà muốn nồi thôi nấu, nhưng lại không biết câu thần chú. Thế là nồi cứ nấu mãi, cháo trào qua miệng nồi, mà nồi vẫn cứ nấu, cho đến khi cả gian bếp rồi cả ngôi nhà đầy ắp, rồi đến nhà bên cạnh, rồi cả con phố, cứ như thể nó muốn cho cả thế gian được no bụng, mọi người khốn đốn vô cùng mà chẳng ai biết cách làm nó dừng lại. Mãi đến khi chỉ còn đúng một ngôi nhà, cô bé mới về tới nơi, em chỉ nói: “Dừng lại, nồi nhỏ,” thế là nồi dừng lại, thôi không nấu nữa, và ai muốn trở về thị trấn thì phải vừa đi vừa ăn cháo mở đường mà về."
+      ]
+    }
+  ]
+}

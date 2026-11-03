@@ -30,6 +30,7 @@ Biến môi trường: `PORT` (mặc định 3000), `HOST` (mặc định 127.0.
 | Thể loại | Nguồn | Bản quyền |
 |---|---|---|
 | Cổ đại, Ngôn tình, Hài hước | Nguyên tác chữ Hán từ Project Gutenberg (API Gutendex) và zh.wikisource: *Liêu Trai chí dị*, *Tam ngôn*, *Đông Chu liệt quốc*, *Sưu thần ký*, *Phù sinh lục ký*, *Oanh Oanh truyện*, *Nho lâm ngoại sử*, *Tiếu lâm*, *Tiếu tán* | Tác giả mất từ năm 221 đến 1825 nên thuộc phạm vi công cộng. Bản dịch tiếng Việt là bản dịch mới do AI (Claude) thực hiện, **cần biên tập lại** |
+| Trinh thám, Cổ tích & Ngụ ngôn, Ngôn tình, Hài hước | Nguyên tác trên Project Gutenberg và Aozora Bunko: Conan Doyle (Sherlock Holmes), Aesop, anh em Grimm, Andersen, O. Henry, Mark Twain, Akutagawa Ryūnosuke | Tác giả mất trước năm 1931; vài truyện Grimm/Andersen/Aesop dịch qua bản tiếng Anh thế kỷ 19 (cũng thuộc phạm vi công cộng). Bản dịch tiếng Việt mới do AI thực hiện, **cần biên tập lại** |
 | Văn học VN | 30 tác phẩm của Nam Cao trên vi.wikisource (API MediaWiki) | Nam Cao mất năm 1951; theo Luật SHTT Việt Nam (bảo hộ đến hết 50 năm sau năm tác giả mất) đã hết bảo hộ — **cần pháp chế xác nhận** |
 
 Không dùng nội dung từ các trang truyện dịch còn bản quyền.

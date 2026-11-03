@@ -1,0 +1,36 @@
+{
+  "id": "ct-andersen-nang-cong-chua-va-hat-dau",
+  "title": "Nàng công chúa và hạt đậu",
+  "titleOrig": "Prindsessen paa Ærten",
+  "author": "Hans Christian Andersen",
+  "authorOrig": "H. C. Andersen",
+  "work": "Truyện cổ Andersen",
+  "genre": "co-tich",
+  "country": "Đan Mạch",
+  "era": "Thế kỷ 19",
+  "desc": "Chàng hoàng tử đi khắp thế gian chỉ để tìm một nàng công chúa thật sự. Một đêm giông bão, có cô gái ướt sũng gõ cửa cung điện, tự xưng là công chúa, và hoàng hậu già quyết thử nàng.",
+  "source": "https://www.gutenberg.org/ebooks/1597",
+  "license": "Nguyên tác thuộc phạm vi công cộng (tác giả mất năm 1875). Bản dịch tiếng Việt mới, dịch từ bản tiếng Anh thế kỷ 19 trong “Andersen's Fairy Tales” (Gutenberg #1597, không ghi tên dịch giả; phạm vi công cộng).",
+  "translator": "Claude (AI) — bản dịch nháp, cần biên tập lại",
+  "sourceRef": {
+    "gutenberg": 1597,
+    "lang": "en",
+    "part": "The Real Princess"
+  },
+  "chapters": [
+    {
+      "title": "Nàng công chúa và hạt đậu",
+      "paras": [
+        "Ngày xưa có một chàng hoàng tử muốn cưới một nàng công chúa; nhưng nàng phải là một công chúa thật sự. Chàng đi khắp thế gian, mong tìm được một người như thế; nhưng lần nào cũng có điều gì đó không ổn. Công chúa thì chàng gặp nhiều lắm; nhưng họ có phải là công chúa thật hay không thì chàng không sao quyết được, vì lúc thì điều này, lúc thì điều khác ở các nàng khiến chàng thấy chưa thật ổn. Cuối cùng chàng trở về cung điện, lòng buồn rười rượi, vì chàng mong mỏi biết bao được có một nàng công chúa thật sự làm vợ.",
+        "Một buổi tối, trời nổi giông bão dữ dội, sấm rền chớp giật, mưa trút xuống như thác đổ: lại thêm trời tối đen như mực. Bỗng có tiếng gõ cửa dồn dập, và ông vua già, cha của hoàng tử, đích thân ra mở cửa.",
+        "Người đứng ngoài cửa là một nàng công chúa. Bị mưa gió vùi dập, trông nàng thật thảm hại; nước chảy ròng ròng từ tóc xuống, quần áo dính sát vào người. Nàng nói nàng là một công chúa thật sự.",
+        "“À! Rồi ta sẽ biết ngay thôi!” bà hoàng thái hậu già nghĩ thầm; tuy vậy, bà không nói một lời nào về việc mình định làm; mà lặng lẽ đi vào phòng ngủ, lột hết chăn đệm khỏi giường, rồi đặt ba hạt đậu nhỏ lên khung giường. Sau đó bà chồng hai mươi tấm nệm lên trên ba hạt đậu ấy, rồi lại chồng thêm hai mươi tấm đệm lông lên trên đống nệm.",
+        "Nàng công chúa sẽ ngủ đêm trên chiếc giường ấy.",
+        "Sáng hôm sau, người ta hỏi nàng ngủ có ngon không. “Ôi, tệ lắm ạ!” nàng đáp. “Suốt đêm con hầu như chẳng chợp mắt được chút nào. Con không biết trong giường có gì, nhưng có cái gì cứng cứng ở dưới người con, khiến con thâm tím khắp mình mẩy. Đau quá đi mất!”",
+        "Vậy là rõ ràng nàng phải là một công chúa thật sự, vì nàng đã cảm thấy ba hạt đậu nhỏ xuyên qua hai mươi tấm nệm và hai mươi tấm đệm lông. Chẳng ai ngoài một nàng công chúa thật sự mới có được làn da nhạy cảm đến thế.",
+        "Thế là hoàng tử cưới nàng làm vợ; giờ chàng đã tin chắc rằng mình tìm được một nàng công chúa thật sự. Còn ba hạt đậu thì được đem cất vào phòng trưng bày đồ quý lạ, đến nay vẫn còn ở đó cho mọi người xem, miễn là chúng chưa bị thất lạc.",
+        "Đó chẳng phải là một quý cô thật sự tinh tế sao?"
+      ]
+    }
+  ]
+}

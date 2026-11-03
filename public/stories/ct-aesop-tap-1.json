@@ -1,0 +1,75 @@
+{
+  "id": "ct-aesop-tap-1",
+  "title": "Ngụ ngôn Aesop (tập 1)",
+  "titleOrig": "Αἰσώπου Μῦθοι",
+  "author": "Aesop",
+  "authorOrig": "Αἴσωπος",
+  "work": "Ngụ ngôn Aesop",
+  "genre": "co-tich",
+  "country": "Hy Lạp cổ",
+  "era": "Thế kỷ 6 TCN",
+  "desc": "Mười lăm truyện ngụ ngôn ngắn của Aesop, nơi sư tử, chuột, cáo, quạ, rùa, thỏ và cả con người cùng góp mặt, mỗi truyện gói ghém một bài học giản dị mà sâu sắc về cách đối nhân xử thế.",
+  "source": "https://www.gutenberg.org/ebooks/21",
+  "license": "Nguyên tác thuộc phạm vi công cộng (tác giả sống vào khoảng thế kỷ 6 TCN). Bản dịch tiếng Việt mới, dịch từ bản tiếng Anh của George Fyler Townsend, 1867 (phạm vi công cộng).",
+  "translator": "Claude (AI) — bản dịch nháp, cần biên tập lại",
+  "sourceRef": {
+    "gutenberg": 21,
+    "lang": "en",
+    "part": "The Lion And The Mouse; The Wolf And The Lamb; The Wolf and the Crane; The Hare and the Tortoise; The Ants and the Grasshopper; The Dog and the Shadow; Hercules and the Wagoner; The Boy and the Filberts; The Oak and the Reeds; The Fox and the Crow; The Crow and the Pitcher; The Fox and the Grapes; The North Wind and the Sun; The Father And His Sons; The Mice in Council"
+  },
+  "chapters": [
+    {
+      "title": "Phần 1 (truyện 1–5)",
+      "paras": [
+        "1. Con sư tử và con chuột",
+        "Một con sư tử đang ngủ thì bị đánh thức vì có con chuột chạy qua mặt. Sư tử giận dữ vùng dậy, chộp lấy con chuột và sắp giết nó thì con chuột thảm thiết van nài: “Nếu ngài tha mạng cho tôi, chắc chắn tôi sẽ đền đáp lòng tốt của ngài.” Sư tử cười phá lên và thả nó đi. Ít lâu sau, sư tử bị mấy người thợ săn bắt được, họ trói chặt nó xuống đất bằng những sợi thừng chắc chắn. Con chuột nhận ra tiếng gầm của sư tử, liền chạy đến lấy răng gặm đứt sợi thừng, giải thoát cho sư tử, rồi nói:",
+        "“Ngài đã chế giễu ý nghĩ rằng tôi có ngày giúp được ngài, chẳng hề mong được tôi đền đáp ơn ngài; giờ thì ngài biết rằng ngay cả một con chuột cũng có thể làm ơn cho một con sư tử.”",
+        "2. Con sói và con cừu non",
+        "Một con sói gặp một con cừu non đi lạc khỏi đàn, bèn quyết định không ra tay hung bạo ngay, mà tìm một cái cớ để chứng minh với cừu non rằng sói có quyền ăn thịt nó. Sói bèn nói: “Này thằng kia, năm ngoái mày đã sỉ nhục tao một cách thô bạo.” “Thật ư,” cừu non kêu be be bằng giọng buồn rầu, “hồi ấy tôi còn chưa ra đời.” Sói lại nói: “Mày ăn cỏ trên đồng cỏ của tao.” “Không đâu, thưa ngài,” cừu non đáp, “tôi còn chưa biết mùi cỏ là gì.” Sói lại nói: “Mày uống nước giếng của tao.” “Không,” cừu non kêu lên, “tôi chưa bao giờ uống nước cả, vì đến giờ sữa mẹ vẫn vừa là thức ăn vừa là nước uống của tôi.” Nghe vậy, sói chộp lấy cừu non mà ăn thịt, rồi nói: “Thôi được! Tao không chịu nhịn bữa tối đâu, dù mày có bác bỏ hết mọi lời buộc tội của tao.” Kẻ bạo ngược bao giờ cũng tìm ra cớ cho sự bạo ngược của mình.",
+        "3. Con sói và con sếu",
+        "Một con sói bị hóc xương trong cổ họng, bèn thuê một con sếu với giá thật hậu để nó thò đầu vào miệng mình mà gắp cái xương ra. Khi sếu đã gắp được xương ra và đòi số tiền công đã hứa, sói nhe răng nghiến lợi mà rằng: “Sao, chắc chắn mày đã được trả công đủ rồi còn gì, khi được rút đầu ra an toàn khỏi miệng và hàm của một con sói.”",
+        "Phục vụ kẻ ác thì đừng mong được đền đáp, mà hãy biết ơn nếu mình thoát khỏi tai họa vì công sức bỏ ra.",
+        "4. Con thỏ và con rùa",
+        "Một hôm, con thỏ chế giễu đôi chân ngắn và dáng đi chậm chạp của con rùa, rùa bèn cười mà đáp: “Dù anh có nhanh như gió, tôi vẫn sẽ thắng anh trong một cuộc chạy đua.” Thỏ tin rằng lời rùa nói hoàn toàn là chuyện không thể, nên nhận lời ngay; và hai bên thỏa thuận để cáo chọn đường đua và định đích. Đến ngày đã hẹn, cả hai cùng xuất phát. Rùa không dừng lại lấy một khắc, cứ thế đi với bước chậm mà chắc, thẳng một mạch tới cuối đường đua. Còn thỏ thì nằm xuống bên vệ đường, ngủ say như chết. Mãi sau thỏ mới tỉnh dậy, chạy nhanh hết sức, thì đã thấy rùa tới đích từ lâu, đang thoải mái ngủ gà ngủ gật sau một chặng đường mệt nhọc.",
+        "Chậm mà chắc thì thắng cuộc.",
+        "5. Đàn kiến và con châu chấu",
+        "Vào một ngày mùa đông đẹp trời, đàn kiến đang phơi những hạt thóc đã thu gom được trong mùa hè. Một con châu chấu đói lả đi ngang qua, tha thiết xin chút thức ăn. Đàn kiến hỏi: “Sao mùa hè anh không để dành thức ăn?” Châu chấu đáp: “Tôi không có thì giờ. Tôi mải ca hát suốt ngày.” Đàn kiến bèn chế giễu: “Nếu anh dại dột đến mức ca hát suốt mùa hè, thì mùa đông anh cứ nhảy múa rồi nhịn đói mà đi ngủ.”"
+      ]
+    },
+    {
+      "title": "Phần 2 (truyện 6–10)",
+      "paras": [
+        "6. Con chó và cái bóng",
+        "Một con chó ngậm miếng thịt trong miệng, đi qua chiếc cầu bắc ngang dòng suối, nhìn thấy bóng mình dưới nước và tưởng đó là một con chó khác đang ngậm miếng thịt to gấp đôi miếng của mình. Nó lập tức nhả miếng thịt của mình ra, hung hăng lao vào con chó kia để giành lấy miếng to hơn. Thế là nó mất cả hai: miếng nó chộp dưới nước, vì đó chỉ là cái bóng; và miếng của chính nó, vì dòng nước đã cuốn trôi đi mất.",
+        "7. Thần Hercules và người đánh xe",
+        "Một người đánh xe đang cho xe đi trên con đường làng thì bánh xe lún sâu xuống một rãnh bùn. Người đánh xe quê mùa sững sờ, kinh hãi, đứng nhìn chiếc xe, chẳng làm gì ngoài kêu gào ầm ĩ, cầu xin thần Hercules đến giúp. Người ta kể rằng thần Hercules hiện ra và nói với anh ta: “Này anh bạn, hãy ghé vai vào bánh xe. Thúc đàn bò của anh đi, và đừng bao giờ cầu xin ta giúp nữa, chừng nào anh chưa cố gắng hết sức để tự giúp mình, bằng không thì cứ tin chắc rằng từ nay anh có cầu xin cũng vô ích.”",
+        "Tự giúp mình là cách giúp tốt nhất.",
+        "8. Cậu bé và những hạt phỉ",
+        "Một cậu bé thò tay vào chiếc bình đầy hạt phỉ. Cậu bốc một nắm đầy nhất mà tay mình có thể giữ được, nhưng khi định rút tay ra, cậu bị cổ bình giữ lại. Không muốn bỏ số hạt phỉ, mà cũng chẳng rút tay ra được, cậu òa khóc, than thở thảm thiết vì thất vọng. Một người đứng bên bảo cậu: “Cháu hãy bằng lòng với một nửa số ấy thôi, rồi cháu sẽ rút tay ra dễ dàng.”",
+        "Đừng tham làm quá nhiều việc cùng một lúc.",
+        "9. Cây sồi và những cây sậy",
+        "Một cây sồi rất to bị gió quật bật gốc, đổ ngang qua dòng suối. Nó ngã xuống giữa đám sậy, bèn nói với chúng: “Ta lấy làm lạ, các ngươi nhẹ nhàng, yếu ớt như thế mà sao lại không bị những trận gió mạnh này quật nát hoàn toàn.” Đám sậy đáp: “Bạn chống chọi và tranh đấu với gió, thế nên bạn bị quật đổ; còn chúng tôi thì ngược lại, chỉ một hơi gió nhẹ nhất là đã cúi mình, vì vậy chúng tôi vẫn không gãy và thoát nạn.”",
+        "Biết cúi mình để chiến thắng.",
+        "10. Con cáo và con quạ",
+        "Một con quạ đánh cắp được một miếng thịt, đậu trên cây, ngậm miếng thịt trong mỏ. Một con cáo trông thấy, thèm muốn chiếm lấy miếng thịt, và bằng một mưu mẹo xảo quyệt, nó đã đạt được ý muốn. “Chị quạ mới xinh đẹp làm sao,” cáo thốt lên, “dáng hình thật đẹp, nước da thật tươi! Ôi, giá mà giọng hát của chị cũng đẹp như nhan sắc, thì chị xứng đáng được coi là Nữ hoàng của các loài chim!” Cáo nói thế là để lừa; nhưng quạ nóng lòng muốn bác bỏ lời chê bai giọng hát của mình, bèn cất tiếng kêu “quạ” thật to, và miếng thịt rơi xuống. Cáo nhanh chóng nhặt lấy rồi nói với quạ: “Chị quạ thân mến, giọng chị thì chẳng có gì đáng chê, nhưng trí khôn thì chị còn thiếu đấy.”"
+      ]
+    },
+    {
+      "title": "Phần 3 (truyện 11–15)",
+      "paras": [
+        "11. Con quạ và cái bình",
+        "Một con quạ khát nước gần chết nhìn thấy một cái bình, và mong tìm được nước, nó mừng rỡ bay tới. Khi tới nơi, nó buồn bã nhận ra trong bình chỉ còn rất ít nước, ít đến mức nó không sao uống tới được. Nó thử mọi cách nó nghĩ ra để với tới nước, nhưng mọi cố gắng đều vô ích. Cuối cùng, nó gom thật nhiều sỏi, tha được bao nhiêu thì tha, rồi lấy mỏ thả từng viên một vào bình, cho đến khi nước dâng lên vừa tầm nó uống, và nhờ thế mà giữ được mạng sống.",
+        "Cái khó ló cái khôn.",
+        "12. Con cáo và chùm nho",
+        "Một con cáo đói meo nhìn thấy mấy chùm nho đen chín mọng treo trên giàn. Cáo dùng đủ mọi mánh khóe để hái, nhưng chỉ tự làm mình mệt lả mà vô ích, vì chẳng sao với tới được. Cuối cùng, cáo quay đi, giấu nỗi thất vọng mà nói: “Nho còn chua lắm, chưa chín như mình tưởng.”",
+        "13. Gió Bấc và Mặt Trời",
+        "Gió Bấc và Mặt Trời tranh cãi xem ai mạnh hơn, và họ thỏa thuận rằng ai làm cho một người lữ khách cởi được quần áo trước thì người đó thắng. Gió Bấc thử sức trước, thổi hết sức mình, nhưng gió càng thổi mạnh, người lữ khách lại càng quấn chặt áo choàng quanh người, cho đến khi cuối cùng, chẳng còn hy vọng thắng nữa, Gió gọi Mặt Trời ra xem có làm được gì không. Mặt Trời bỗng tỏa ra tất cả hơi ấm của mình. Người lữ khách vừa cảm thấy những tia nắng dịu dàng liền cởi hết lớp áo này đến lớp áo khác, và cuối cùng, nóng quá chịu không nổi, anh cởi hết quần áo và xuống tắm ở một dòng suối trên đường mình đi.",
+        "Thuyết phục hay hơn dùng sức mạnh.",
+        "14. Người cha và các con trai",
+        "Một người cha có mấy người con trai lúc nào cũng cãi cọ nhau. Khuyên răn mãi mà không hòa giải được những cuộc tranh chấp của chúng, ông quyết định cho chúng thấy tận mắt cái hại của sự chia rẽ; vì thế, một hôm ông bảo các con mang đến cho ông một bó que. Khi chúng mang đến rồi, ông lần lượt đặt bó que vào tay từng đứa, bảo chúng bẻ gãy. Chúng dùng hết sức mà vẫn không bẻ được. Rồi ông cởi bó que ra, lấy từng que riêng lẻ, đặt vào tay các con, và chúng bẻ gãy dễ dàng. Bấy giờ ông nói với các con: “Các con của cha, nếu các con đồng lòng, đoàn kết giúp đỡ lẫn nhau, các con sẽ như bó que này, chẳng kẻ thù nào làm hại nổi dù chúng có ra sức thế nào; nhưng nếu các con chia rẽ với nhau, các con sẽ bị bẻ gãy dễ dàng như những que lẻ này.”",
+        "15. Hội nghị của loài chuột",
+        "Loài chuột họp hội nghị để bàn xem làm cách nào tốt nhất để biết trước khi kẻ thù lớn của chúng là con mèo đến gần. Trong rất nhiều kế được đưa ra, kế được ưa chuộng nhất là buộc một cái chuông vào cổ con mèo, để khi mèo đến gần, nghe tiếng chuông leng keng, lũ chuột sẽ kịp chạy trốn vào hang. Nhưng khi lũ chuột bàn tiếp xem ai trong số chúng sẽ đi “buộc chuông cho mèo”, thì chẳng tìm được con nào dám làm."
+      ]
+    }
+  ]
+}

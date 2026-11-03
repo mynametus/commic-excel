@@ -13,8 +13,10 @@ const ROOT = path.join(__dirname, '..');
 const STORIES = path.join(ROOT, 'public', 'stories');
 const GENRES = [
   { id: 'co-dai', name: 'Cổ đại', color: '#C0504D' },
-  { id: 'hai-huoc', name: 'Hài hước', color: '#ED7D31' },
   { id: 'ngon-tinh', name: 'Ngôn tình', color: '#E05C9B' },
+  { id: 'hai-huoc', name: 'Hài hước', color: '#ED7D31' },
+  { id: 'trinh-tham', name: 'Trinh thám', color: '#5B6B7F' },
+  { id: 'co-tich', name: 'Cổ tích & Ngụ ngôn', color: '#70AD47' },
   { id: 'van-hoc-vn', name: 'Văn học VN', color: '#4472C4' }
 ];
 
@@ -50,8 +52,11 @@ function buildIndex() {
     if (!f.endsWith('.json') || f === 'index.json') continue;
     const s = JSON.parse(fs.readFileSync(path.join(STORIES, f), 'utf8'));
     if (!s.id || !Array.isArray(s.chapters) || !s.chapters.length) { console.log('  bỏ qua file lỗi:', f); continue; }
+    if (!GENRES.some(g => g.id === s.genre)) console.log(`  ⚠ ${f}: thể loại lạ "${s.genre}"`);
+    const country = s.country || (s.titleZh ? 'Trung Quốc' : s.genre === 'van-hoc-vn' ? 'Việt Nam' : '');
     items.push({
-      id: s.id, title: s.title, titleZh: s.titleZh || '', author: s.author || '', authorZh: s.authorZh || '',
+      id: s.id, title: s.title, titleOrig: s.titleOrig || s.titleZh || '', author: s.author || '',
+      authorOrig: s.authorOrig || s.authorZh || '', country,
       work: s.work || '', genre: s.genre, era: s.era || '', desc: s.desc || '',
       translator: s.translator || '', source: s.source || '', license: s.license || '',
       chapters: s.chapters.length, chapterTitles: s.chapters.map(c => c.title),

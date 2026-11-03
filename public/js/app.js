@@ -6,8 +6,9 @@
 
   // Thư viện tĩnh: public/stories/index.json (tạo bởi scripts/build-library.js)
   const DEFAULT_GENRES = [
-    { id: 'co-dai', name: 'Cổ đại', color: '#C0504D' }, { id: 'hai-huoc', name: 'Hài hước', color: '#ED7D31' },
-    { id: 'ngon-tinh', name: 'Ngôn tình', color: '#E05C9B' }, { id: 'van-hoc-vn', name: 'Văn học VN', color: '#4472C4' }
+    { id: 'co-dai', name: 'Cổ đại', color: '#C0504D' }, { id: 'ngon-tinh', name: 'Ngôn tình', color: '#E05C9B' },
+    { id: 'hai-huoc', name: 'Hài hước', color: '#ED7D31' }, { id: 'trinh-tham', name: 'Trinh thám', color: '#5B6B7F' },
+    { id: 'co-tich', name: 'Cổ tích & Ngụ ngôn', color: '#70AD47' }, { id: 'van-hoc-vn', name: 'Văn học VN', color: '#4472C4' }
   ];
   let LIB = { genres: DEFAULT_GENRES, stories: [] };
   async function loadLibrary() {
@@ -104,7 +105,7 @@
   function libBook(st) {
     return {
       key: 'lib:' + st.id, src: 'lib', story: st, title: st.title, author: st.author, genre: st.genreName,
-      titleZh: st.titleZh, work: st.work, era: st.era, translator: st.translator, license: st.license,
+      titleOrig: st.titleOrig, country: st.country, work: st.work, era: st.era, translator: st.translator, license: st.license,
       desc: st.desc, url: st.source || null, nextUrl: null,
       chapters: st.chapterTitles.map(t => ({ title: t, paras: null, state: 'idle' }))
     };
@@ -196,8 +197,9 @@
   const LCOLS = [
     { k: 'idx', label: 'STT', w: 48, num: true },
     { k: 'title', label: 'Tên truyện', w: 250 },
-    { k: 'titleZh', label: 'Tên gốc', w: 110 },
-    { k: 'author', label: 'Tác giả', w: 130, en: true },
+    { k: 'titleOrig', label: 'Tên gốc', w: 150 },
+    { k: 'author', label: 'Tác giả', w: 140, en: true },
+    { k: 'country', label: 'Quốc gia', w: 96, en: true },
     { k: 'work', label: 'Tác phẩm / Tuyển tập', w: 180, en: true },
     { k: 'genreName', label: 'Thể loại', w: 100, en: true },
     { k: 'chapters', label: 'Số chương', w: 86, num: true },
@@ -235,9 +237,10 @@
     const maxWords = Math.max(1, ...all.map(s => s.words || 0));
     const rows = [];
     const label = sh.genre ? sh.name.toUpperCase() : 'TẤT CẢ THỂ LOẠI';
-    rows[0] = { cells: [C(0, 'THƯ VIỆN TRUYỆN — ' + label, { cs: 10, cls: 'title', html: '<b>THƯ VIỆN TRUYỆN</b> — ' + esc(label) })] };
-    rows[1] = { cells: [C(0, `Hiển thị ${list.length}/${all.length} truyện · Truyện cổ Trung Hoa dịch từ nguyên tác & văn học Việt Nam đã hết bảo hộ bản quyền · Bấm tên truyện (chữ xanh) để đọc · ▾ để sắp xếp/lọc`, { cs: 10, cls: 'note' })] };
-    if (!all.length) rows[2] = { cells: [C(0, 'Chưa có truyện trong thể loại này — chạy scripts/translate.js rồi scripts/build-library.js để bổ sung.', { cs: 10, cls: 'neutral' })] };
+    const NC = LCOLS.length;
+    rows[0] = { cells: [C(0, 'THƯ VIỆN TRUYỆN — ' + label, { cs: NC, cls: 'title', html: '<b>THƯ VIỆN TRUYỆN</b> — ' + esc(label) })] };
+    rows[1] = { cells: [C(0, `Hiển thị ${list.length}/${all.length} truyện · Tác phẩm đã hết bảo hộ bản quyền (Trung, Anh, Mỹ, Đức, Đan Mạch, Nhật, Việt Nam…), truyện nước ngoài là bản dịch mới · Bấm tên truyện (chữ xanh) để đọc · ▾ để sắp xếp/lọc`, { cs: NC, cls: 'note' })] };
+    if (!all.length) rows[2] = { cells: [C(0, 'Chưa có truyện trong thể loại này — chạy scripts/translate.js rồi scripts/build-library.js để bổ sung.', { cs: NC, cls: 'neutral' })] };
     rows[3] = {
       cells: LCOLS.map((col, i) => C(i, col.label, {
         cls: 'th',
@@ -251,14 +254,15 @@
         cells: [
           C(0, s.idx, { cls: 'num' + b }),
           C(1, s.title, { cls: 'link' + b, act: 'open:' + s.id, f: `=HYPERLINK("#${s.id}";"${s.title}")` }),
-          C(2, s.titleZh, { cls: b }),
-          C(3, s.author, { cls: b }),
-          C(4, s.work, { cls: b }),
-          C(5, s.genreName, { cls: b }),
-          C(6, s.chapters, { cls: 'num' + b }),
-          C(7, s.words, { cls: 'num databar' + b, html: `<span class="dbar" style="--p:${((s.words || 0) / maxWords).toFixed(3)}"></span><span class="dv">${fmtNum(s.words || 0)}</span>` }),
-          C(8, s.transShort, { cls: ai ? 'neutral' : 'good', f: s.translator || s.transShort }),
-          C(9, s.desc, { cls: b })
+          C(2, s.titleOrig, { cls: b }),
+          C(3, s.author, { cls: b, f: s.authorOrig ? `${s.author} (${s.authorOrig})` : s.author }),
+          C(4, s.country, { cls: b }),
+          C(5, s.work, { cls: b }),
+          C(6, s.genreName, { cls: b }),
+          C(7, s.chapters, { cls: 'num' + b }),
+          C(8, s.words, { cls: 'num databar' + b, html: `<span class="dbar" style="--p:${((s.words || 0) / maxWords).toFixed(3)}"></span><span class="dv">${fmtNum(s.words || 0)}</span>` }),
+          C(9, s.transShort, { cls: ai ? 'neutral' : 'good', f: s.translator || s.transShort }),
+          C(10, s.desc, { cls: b })
         ]
       });
     });
@@ -266,10 +270,10 @@
     const sumCh = list.reduce((a, s) => a + s.chapters, 0), sumW = list.reduce((a, s) => a + (s.words || 0), 0);
     rows.push({
       cells: [
-        C(0, 'Tổng', { cls: 'tot', cs: 6 }),
-        C(6, sumCh, { cls: 'tot num', f: `=SUBTOTAL(109;G${r0}:G${r1})` }),
-        C(7, fmtNum(sumW), { cls: 'tot num', f: `=SUBTOTAL(109;H${r0}:H${r1})` }),
-        C(8, '', { cls: 'tot' }), C(9, '', { cls: 'tot' })
+        C(0, 'Tổng', { cls: 'tot', cs: 7 }),
+        C(7, sumCh, { cls: 'tot num', f: `=SUBTOTAL(109;H${r0}:H${r1})` }),
+        C(8, fmtNum(sumW), { cls: 'tot num', f: `=SUBTOTAL(109;I${r0}:I${r1})` }),
+        C(9, '', { cls: 'tot' }), C(10, '', { cls: 'tot' })
       ]
     });
     return { cols: LCOLS.map(c => c.w), rows, minCols: 14 };
@@ -349,7 +353,7 @@
     rows[0] = { cells: [C(1, b.title, { cs: 5, cls: 'title', html: '<b>' + esc(b.title) + '</b>' })] };
     rows[1] = { cells: [C(1, [b.author, b.genre].filter(Boolean).join(' · ') || 'Truyện nhập', { cs: 4, cls: 'note' }), C(5, '⌂ Về thư viện', { cls: 'link right', act: 'lib' })] };
     const props = [
-      ['Tên gốc', b.titleZh], ['Tác giả', b.author], ['Tác phẩm', b.work], ['Thể loại', b.genre], ['Thời đại', b.era],
+      ['Tên gốc', b.titleOrig], ['Tác giả', b.author], ['Quốc gia', b.country], ['Tác phẩm', b.work], ['Thể loại', b.genre], ['Thời đại', b.era],
       ['Số chương', b.chapters.length + (b.totalFound && b.totalFound > b.chapters.length ? ` (đã tạo sheet; tìm thấy ${b.totalFound})` : '') + (b.nextUrl ? ' (còn chương tiếp)' : '')],
       ['Bản dịch', b.translator], ['Bản quyền', b.license]
     ].filter(p => p[1]);
@@ -1357,7 +1361,7 @@
     const nq = norm(q);
     tsItems = [];
     if (/^https?:\/\/|^www\.|\.[a-z]{2,}\//i.test(q)) tsItems.push({ label: '⤓ Nhập truyện từ link này', sub: q, fn: () => { S.imp.url = q; goLibrary('import'); runImport(q); } });
-    LIB.stories.filter(s => norm(s.title).includes(nq) || norm(s.author).includes(nq) || (s.titleZh || '').includes(q)).slice(0, 12)
+    LIB.stories.filter(s => norm(s.title).includes(nq) || norm(s.author).includes(nq) || norm(s.titleOrig).includes(nq) || norm(s.country).includes(nq)).slice(0, 12)
       .forEach(s => tsItems.push({ label: s.title, sub: s.genreName + ' · ' + s.author, fn: () => openLib(s.id) }));
     tsItems.push({ label: `🔍 Tìm “${q}” trong sổ làm việc hiện tại`, fn: () => { openFind(q); doFindAll(); } });
     tsPos = tsItems.length > 1 ? 0 : -1;

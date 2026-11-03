@@ -1,0 +1,28 @@
+{
+  "id": "ct-grimm-sterntaler",
+  "title": "Những đồng tiền sao",
+  "titleOrig": "Die Sterntaler",
+  "author": "Anh em Grimm",
+  "authorOrig": "Brüder Grimm",
+  "work": "Truyện cổ Grimm",
+  "genre": "co-tich",
+  "country": "Đức",
+  "era": "Thế kỷ 19",
+  "desc": "Một cô bé mồ côi nghèo đến mức chỉ còn bộ quần áo trên người và mẩu bánh mì trong tay. Vậy mà trên đường đi, gặp ai khốn khó hơn, em vẫn sẵn lòng sẻ chia.",
+  "source": "https://www.gutenberg.org/ebooks/5314",
+  "license": "Nguyên tác thuộc phạm vi công cộng (tác giả mất năm 1859 và 1863). Bản dịch tiếng Việt mới, dịch từ bản tiếng Anh của Margaret Hunt, 1884 (phạm vi công cộng), do Gutenberg không có văn bản tiếng Đức của truyện này.",
+  "translator": "Claude (AI) — bản dịch nháp, cần biên tập lại",
+  "sourceRef": {
+    "gutenberg": 5314,
+    "lang": "en",
+    "part": "The Star-Money"
+  },
+  "chapters": [
+    {
+      "title": "Những đồng tiền sao",
+      "paras": [
+        "Ngày xửa ngày xưa, có một cô bé cha mẹ đều đã mất, em nghèo đến nỗi chẳng còn lấy một căn phòng nhỏ để ở hay một chiếc giường để ngủ, và sau cùng em chẳng còn gì ngoài bộ quần áo đang mặc trên người và một mẩu bánh mì nhỏ trong tay mà một người tốt bụng nào đó đã cho. Thế nhưng em là một đứa trẻ hiền lành và ngoan đạo. Và vì bị cả thế gian bỏ rơi như thế, em đi ra cánh đồng, phó thác mình cho Chúa nhân lành. Bỗng có một người đàn ông nghèo gặp em và nói: “Ôi, cho tôi chút gì ăn với, tôi đói quá!” Em đưa cho ông cả mẩu bánh mì của mình và nói: “Cầu Chúa ban phước cho ông,” rồi đi tiếp. Rồi có một đứa trẻ đến, rên rỉ: “Đầu em lạnh quá, cho em cái gì để che đầu với.” Thế là em cởi chiếc mũ trùm của mình ra đưa cho nó; đi thêm một quãng nữa, em gặp một đứa trẻ khác không có áo khoác, đang lạnh cóng. Em liền cho nó chiếc áo của mình; xa hơn chút nữa, lại có đứa xin một chiếc váy, và em cũng cho nốt. Cuối cùng em vào tới một khu rừng, trời đã tối, và lại có thêm một đứa trẻ nữa đến xin một chiếc áo lót nhỏ, cô bé tốt bụng nghĩ thầm: “Đêm tối thế này, chẳng ai nhìn thấy mình đâu, mình cho chiếc áo lót đi cũng được,” rồi cởi ra và cho nốt. Khi em đứng đó, chẳng còn lại một thứ gì, bỗng nhiên có những ngôi sao từ trên trời rơi xuống, và chúng chẳng phải gì khác mà chính là những đồng tiền cứng và nhẵn bóng, và dù em vừa cho đi chiếc áo lót nhỏ của mình, em lại có một chiếc áo mới bằng thứ vải lanh mịn nhất. Em gom những đồng tiền vào chiếc áo ấy, và em giàu có suốt cả cuộc đời."
+      ]
+    }
+  ]
+}
