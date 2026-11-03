@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thu_vien_truyen.xlsx - Excel</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='2' y='2' width='28' height='28' rx='5' fill='%23217346'/%3E%3Cpath d='M8 9h16M8 16h16M8 23h16M16 9v14' stroke='%23fff' stroke-width='2.2'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/excel.css">
+</head>
+<body>
+  <!-- Thanh tiêu đề -->
+  <header id="titlebar">
+    <div class="tb-left">
+      <span class="app-ic" aria-hidden="true"></span>
+      <label class="autosave" title="Tự động lưu (trang trí)"><span>Tự động lưu</span><i class="sw on"></i></label>
+      <button class="qat" data-cmd="export" title="Lưu bản sao .xlsx (Ctrl+S)"></button>
+      <button class="qat" data-cmd="decor" data-ic="undo" title="Hoàn tác"></button>
+      <button class="qat" data-cmd="decor" data-ic="redo" title="Làm lại"></button>
+      <button class="qat" data-cmd="library" data-ic="home" title="Về thư viện"></button>
+    </div>
+    <div class="tb-center">
+      <span id="docname">Thu_vien_truyen.xlsx</span><span class="saved">• Đã lưu</span>
+    </div>
+    <div class="tb-search">
+      <input id="tsearch" type="search" placeholder="Tìm truyện… (Alt+Q)" autocomplete="off" aria-label="Tìm truyện">
+      <div id="tsearch-dd" class="menu hidden"></div>
+    </div>
+    <div class="tb-right">
+      <span class="avatar" title="Bạn">B</span>
+      <button class="win" data-cmd="decor" title="Thu nhỏ">&#x2500;</button>
+      <button class="win" data-cmd="full" title="Toàn màn hình">&#x2610;</button>
+      <button class="win close" data-cmd="closeWb" title="Đóng sổ làm việc">&#x2715;</button>
+    </div>
+  </header>
+
+  <!-- Ribbon -->
+  <nav id="rtabs" role="tablist"></nav>
+  <section id="ribbon"></section>
+
+  <!-- Thanh công thức -->
+  <div id="fbar">
+    <input id="namebox" value="A1" spellcheck="false" aria-label="Hộp tên">
+    <span class="fsep">&#x22EE;</span>
+    <span class="fbx">&#x2715;</span><span class="fbx">&#x2713;</span><span class="fbx fx"><i>f</i>x</span>
+    <div id="fx" tabindex="0"></div>
+    <button id="fexp" title="Mở rộng thanh công thức">&#x2304;</button>
+  </div>
+
+  <!-- Lưới -->
+  <main id="gridwrap"><div id="grid"></div></main>
+
+  <!-- Thanh sheet -->
+  <div id="tabbar">
+    <button class="tnav" data-nav="prev" title="Cuộn sang trái">&#x25C0;</button>
+    <button class="tnav" data-nav="next" title="Cuộn sang phải">&#x25B6;</button>
+    <button class="tnav" data-nav="list" title="Danh sách trang tính">&#x22EF;</button>
+    <div id="tabs"></div>
+    <button id="addsheet" title="Trang tính mới / Tải thêm chương">+</button>
+    <div class="tab-fill"></div>
+  </div>
+
+  <!-- Thanh trạng thái -->
+  <footer id="status">
+    <span id="st-left">Sẵn sàng</span>
+    <span id="st-acc">Trợ năng: Sẵn sàng để dùng</span>
+    <span class="sp"></span>
+    <span id="st-info"></span>
+    <span class="views"><i class="v-normal on" title="Thường"></i><i class="v-page" title="Bố trí trang"></i><i class="v-break" title="Xem ngắt trang"></i></span>
+    <button id="z-minus" title="Thu nhỏ">&#x2212;</button>
+    <input id="z-range" type="range" min="50" max="200" step="10" aria-label="Thu phóng">
+    <button id="z-plus" title="Phóng to">+</button>
+    <span id="z-val">100%</span>
+  </footer>
+
+  <!-- Backstage (Tệp) -->
+  <div id="backstage" class="hidden">
+    <aside>
+      <button data-bs="back" class="bs-back">&#x2190;</button>
+      <button data-bs="home" class="on">Trang chủ</button>
+      <button data-bs="open">Mở</button>
+      <button data-bs="import">Nhập từ link</button>
+      <hr>
+      <button data-bs="export">Lưu bản sao (.xlsx)</button>
+      <button data-bs="close">Đóng</button>
+      <div class="bs-sp"></div>
+      <button data-bs="keys">Phím tắt</button>
+      <button data-bs="about">Giới thiệu</button>
+    </aside>
+    <div class="bs-main" id="bs-main"></div>
+  </div>
+
+  <!-- Hộp thoại Tìm -->
+  <div id="finddlg" class="dlg hidden" role="dialog" aria-label="Tìm và Thay thế">
+    <div class="dlg-h"><span>Tìm và Thay thế</span><button class="dlg-x" data-close="finddlg">&#x2715;</button></div>
+    <div class="dlg-tabs"><span class="on">Tìm</span><span>Thay thế</span></div>
+    <div class="dlg-b">
+      <label>Tìm gì: <input id="find-q" type="text" autocomplete="off"></label>
+      <div class="dlg-row"><span class="muted-s">Trong: Sổ làm việc hiện tại</span></div>
+      <div class="dlg-act"><button id="find-all">Tìm tất cả</button><button id="find-next">Tìm tiếp</button><button data-close="finddlg">Đóng</button></div>
+      <div id="find-res"></div>
+    </div>
+  </div>
+
+  <div id="modal" class="dlg hidden" role="dialog">
+    <div class="dlg-h"><span id="modal-t"></span><button class="dlg-x" data-close="modal">&#x2715;</button></div>
+    <div class="dlg-b" id="modal-b"></div>
+  </div>
+
+  <div id="toasts"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

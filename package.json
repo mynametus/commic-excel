@@ -1,0 +1,12 @@
+{
+  "name": "excel-story-reader",
+  "version": "1.0.0",
+  "description": "Website đọc truyện giao diện bảng tính: mỗi chương một sheet, nhập truyện bằng link, xuất .xlsx",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": { "node": ">=18" },
+  "license": "UNLICENSED",
+  "private": true
+}
