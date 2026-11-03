@@ -16,7 +16,8 @@ const HOST = process.env.HOST || '127.0.0.1';
 const ALLOW_PRIVATE = process.env.ALLOW_PRIVATE === '1';
 const PUBLIC_DIR = path.join(__dirname, 'public');
 const MAX_BYTES = 5 * 1024 * 1024;
-const TIMEOUT_MS = 15000;
+// Trên Vercel, function có thể bị giới hạn ~10 giây → chờ trang nguồn tối đa 8 giây
+const TIMEOUT_MS = Number(process.env.FETCH_TIMEOUT_MS) || (process.env.VERCEL ? 8000 : 15000);
 const UA = process.env.UA || 'Mozilla/5.0 (compatible; ExcelStoryReader/1.0)';
 
 class HttpError extends Error {
