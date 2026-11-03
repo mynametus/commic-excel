@@ -11,6 +11,20 @@ npm start            # cần Node 18 trở lên, không phải cài thêm thư v
 
 Biến môi trường: `PORT` (mặc định 3000), `HOST` (mặc định 127.0.0.1; đặt `0.0.0.0` để điện thoại trong mạng LAN truy cập được).
 
+## Deploy
+
+### Vercel (khuyên dùng: đầy đủ tính năng, kể cả "Nhập link")
+1. Vào https://vercel.com → **Add New… → Project** → chọn repo `commic-excel` → **Import**.
+2. Framework Preset: **Other**. Không cần đổi gì khác, vì `vercel.json` đã đặt thư mục xuất là `public/` và function `api/import.js`.
+3. Bấm **Deploy**. Từ đó, mỗi lần `git push` lên `main` Vercel sẽ tự deploy lại.
+
+### GitHub Pages (chỉ file tĩnh)
+1. Repo → **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+2. Push lên `main`. Workflow `.github/workflows/pages.yml` sẽ deploy thư mục `public/`.
+3. Địa chỉ trang: `https://<tài-khoản>.github.io/commic-excel/`.
+4. Muốn "Nhập link" chạy được trên Pages: deploy thêm lên Vercel, rồi điền vào `public/index.html`:
+   `<meta name="api-base" content="https://<tên-dự-án>.vercel.app">`
+
 ## Ý tưởng & tính năng
 
 | Thành phần Excel | Dùng để làm gì |

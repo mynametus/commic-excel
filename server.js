@@ -298,19 +298,40 @@ const MIME = {
   '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8',
   '.svg': 'image/svg+xml', '.png': 'image/png', '.ico': 'image/x-icon', '.json': 'application/json; charset=utf-8'
 };
-function sendJson(res, status, obj) {
-  res.writeHead(status, { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' });
+function sendJson(res, status, obj, extraHeaders) {
+  res.writeHead(status, Object.assign({
+    'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store',
+    'access-control-allow-origin': '*'
+  }, extraHeaders || {}));
   res.end(JSON.stringify(obj));
 }
 
-async function handleImport(res, target) {
-  if (!target) return sendJson(res, 400, { ok: false, error: 'Thiếu tham số url' });
+/** Dùng chung cho server Node và Vercel Function (api/import.js) */
+async function importUrl(target) {
+  if (!target) throw new HttpError(400, 'Thiếu tham số url');
   const hit = cacheGet(target);
-  if (hit) return sendJson(res, 200, { ok: true, cached: true, ...hit });
+  if (hit) return { cached: true, ...hit };
   const page = await fetchPage(target);
   const data = page.isText ? extractText(page.body, page.finalUrl) : extract(page.body, page.finalUrl);
   cacheSet(target, data);
-  sendJson(res, 200, { ok: true, ...data });
+  return data;
+}
+
+/** Xử lý request /api/import (req.url có tham số ?url=) */
+async function handleImportRequest(req, res) {
+  if (req.method === 'OPTIONS') {
+    res.writeHead(204, { 'access-control-allow-origin': '*', 'access-control-allow-methods': 'GET, OPTIONS' });
+    return res.end();
+  }
+  try {
+    const u = new URL(req.url, 'http://localhost');
+    const data = await importUrl(u.searchParams.get('url'));
+    sendJson(res, 200, { ok: true, ...data }, { 'cache-control': 'public, s-maxage=600' });
+  } catch (e) {
+    const status = e instanceof HttpError ? e.status : 500;
+    if (status === 500) console.error(e);
+    sendJson(res, status, { ok: false, error: e instanceof HttpError ? e.message : 'Lỗi máy chủ: ' + e.message });
+  }
 }
 
 function serveStatic(req, res, pathname) {
@@ -329,7 +350,7 @@ function createServer() {
   return http.createServer(async (req, res) => {
     try {
       const u = new URL(req.url, 'http://localhost');
-      if (u.pathname === '/api/import') return await handleImport(res, u.searchParams.get('url'));
+      if (u.pathname === '/api/import') return await handleImportRequest(req, res);
       if (req.method !== 'GET' && req.method !== 'HEAD') { res.writeHead(405); return res.end(); }
       serveStatic(req, res, u.pathname);
     } catch (e) {
@@ -346,4 +367,4 @@ if (require.main === module) {
   });
 }
 
-module.exports = { extract, htmlToLines, createServer, isPrivateIp };
+module.exports = { extract, htmlToLines, createServer, isPrivateIp, importUrl, handleImportRequest };

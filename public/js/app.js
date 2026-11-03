@@ -650,12 +650,16 @@
   }
 
   /* ------------------------------ Nhập từ link ------------------------------ */
+  const API_BASE = (() => {
+    const m = document.querySelector('meta[name="api-base"]');
+    return (m && m.content.trim().replace(/\/+$/, '')) || '';
+  })();
   async function apiImport(url) {
     let res;
-    try { res = await fetch('/api/import?url=' + encodeURIComponent(url)); }
-    catch (e) { throw new Error('Không gọi được máy chủ. Hãy chạy "npm start" rồi mở http://localhost:3000'); }
+    try { res = await fetch(API_BASE + '/api/import?url=' + encodeURIComponent(url)); }
+    catch (e) { throw new Error('Không gọi được máy chủ nhập truyện. Chạy "npm start", deploy lên Vercel, hoặc điền <meta name="api-base"> trong index.html.'); }
     let j;
-    try { j = await res.json(); } catch (e) { throw new Error('Máy chủ phản hồi không hợp lệ (bạn đã chạy "npm start" chưa?)'); }
+    try { j = await res.json(); } catch (e) { throw new Error('Không có API nhập truyện ở địa chỉ này (GitHub Pages chỉ chứa file tĩnh — hãy điền <meta name="api-base"> trỏ tới bản Vercel).'); }
     if (!j.ok) throw new Error(j.error || 'Lỗi không xác định');
     return j;
   }
