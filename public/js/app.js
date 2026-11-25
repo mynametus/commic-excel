@@ -992,6 +992,8 @@
           await sleep(400);
           try {
             const r2 = await apiImport(next);
+            // "next" có thể là bài viết kế tiếp (WordPress) chứ không phải trang 2 của mục lục → dừng
+            if (r2.kind !== 'toc') break;
             const fresh = r2.chapters.filter(c => !seen.has(c.url));
             if (!fresh.length) break;
             fresh.forEach(c => { seen.add(c.url); chs.push(c); });
