@@ -187,6 +187,14 @@ body.nowrap .grid td.para { white-space: nowrap; text-overflow: ellipsis; }
 body.boldread .grid td.para { font-weight: 600; }
 .grid td.navcell { font-size: 14px; }
 
+/* Trang đọc ở chế độ ngụy trang: chữ nằm trong cột "Diễn giải" cỡ chữ ô bình thường */
+.grid td.desc {
+  white-space: normal; line-height: 20px; padding: 0 6px; height: auto; vertical-align: bottom;
+  font-size: calc(var(--read-size) * .9); user-select: text; cursor: text;
+}
+body.nowrap .grid td.desc { white-space: nowrap; text-overflow: ellipsis; }
+body.boldread .grid td.desc { font-weight: 600; }
+
 /* Ô nhập liệu */
 .grid td.inputcell { padding: 1px; }
 .inputcell input, .inputcell select, .inputcell textarea {

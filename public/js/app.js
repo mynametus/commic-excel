@@ -50,8 +50,45 @@
   const WIDTHS = [560, 680, 760, 880, 1000, 1160];
   const settings = Object.assign({
     zoom: 100, font: 'Calibri', size: 12, paper: 'default', align: 'justify', wrap: true,
-    grid: true, headings: true, fbar: true, dark: false, readWidth: 760, bold: false
+    grid: true, headings: true, fbar: true, dark: false, readWidth: 760, bold: false, camo: true
   }, store.get('settings', {}));
+
+  /* ------------------------------ Ngụy trang số liệu ------------------------------
+     Khi bật (settings.camo): tên file, tên sheet, thư viện, mục lục và trang đọc
+     được trình bày như sổ theo dõi mua hàng. Mọi con số đều là số NGẪU NHIÊN giả
+     (sinh cố định theo mã truyện/chương), không phải dữ liệu thật của công ty. */
+  function hashStr(s) { let h = 2166136261; s = String(s); for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
+  function rng(seed) { let a = seed >>> 0; return () => { a = (a + 0x6D2B79F5) >>> 0; let t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+  const pad = (n, w) => String(n).padStart(w, '0');
+  const fmtDate = d => pad(d.getDate(), 2) + '/' + pad(d.getMonth() + 1, 2) + '/' + d.getFullYear();
+  const pct1 = p => (p * 100).toFixed(1).replace('.', ',') + '%';
+  const CAMO_CATS = ['Nguyên vật liệu', 'Vật tư phụ', 'Bao bì', 'Phụ tùng', 'Hóa chất', 'Thiết bị', 'CCDC', 'Dịch vụ', 'Vận chuyển', 'Văn phòng phẩm'];
+  const CAMO_UNITS = [ // ĐVT, đơn giá min–max, số lượng min–max
+    ['Kg', 18000, 260000, 50, 4000], ['M', 2500, 48000, 100, 15000], ['Cuộn', 350000, 4800000, 1, 60], ['Bộ', 120000, 2500000, 1, 40],
+    ['Cái', 8000, 650000, 5, 800], ['Thùng', 90000, 1200000, 2, 300], ['Lít', 22000, 180000, 20, 2000], ['Tấn', 9500000, 68000000, 1, 25]
+  ];
+  const VT_PREFIX = ['NL', 'VP', 'BB', 'PT', 'HC', 'TB', 'CC', 'DV'];
+  const catOf = genreId => { const i = LIB.genres.findIndex(g => g.id === genreId); return i < 0 ? 'Khác' : CAMO_CATS[i % CAMO_CATS.length]; };
+  const nccOf = author => 'NCC-' + pad(hashStr(author || '-') % 900 + 100, 3);
+  const caseCode = key => 'HS26-' + pad(hashStr(key) % 10000, 4);
+  const yymm = () => { const d = new Date(); return String(d.getFullYear()).slice(2) + pad(d.getMonth() + 1, 2); };
+
+  // Tách đoạn văn thành các dòng ngắn (theo câu, rồi dấu phẩy, rồi từ) để mỗi dòng bảng chỉ chứa ít chữ.
+  function chunkText(p, max) {
+    const greedy = (parts, sep) => parts.reduce((out, s) => {
+      const last = out[out.length - 1];
+      if (last != null && (last + sep + s).length <= max) out[out.length - 1] = last + sep + s; else out.push(s);
+      return out;
+    }, []);
+    const pieces = [];
+    String(p).split(/(?<=[.!?…。！？][”"»')]?)\s+/).forEach(sen => {
+      if (sen.length <= max * 1.3) { pieces.push(sen); return; }
+      sen.split(/(?<=[,;:])\s+/).forEach(cl => {
+        if (cl.length <= max * 1.3) pieces.push(cl); else pieces.push(...greedy(cl.split(/\s+/), ' '));
+      });
+    });
+    return greedy(pieces.filter(Boolean), ' ');
+  }
 
   function fontStack(f) {
     const serif = ['Cambria', 'Times New Roman', 'Georgia'].includes(f);
@@ -86,16 +123,23 @@
   const curWb = () => (W.bossOn ? W.boss : W.list[W.cur]);
   const curSheet = () => { const wb = curWb(); return wb.sheets[wb.active]; };
 
+  // n0 = tên thường, n1 = tên khi ngụy trang; refreshNames() gán vào .name
   function libraryWorkbook() {
     return {
-      id: 'lib', name: 'Thu_vien_truyen.xlsx', kind: 'library', active: 0,
+      id: 'lib', n0: 'Thu_vien_truyen.xlsx', n1: 'Tong_hop_mua_hang_2026.xlsx', kind: 'library', active: 0,
       sheets: [
-        { name: 'Tổng hợp', kind: 'library', genre: null, key: 'all', color: '#4472C4' },
-        ...LIB.genres.map(g => ({ name: g.name, kind: 'library', genre: g.id, key: g.id, color: g.color })),
-        { name: 'Đang đọc', kind: 'history', color: '#7030A0' },
-        { name: 'Nhập link', kind: 'import', color: '#217346' }
+        { n0: 'Tổng hợp', n1: 'Tổng hợp', kind: 'library', genre: null, key: 'all', color: '#4472C4' },
+        ...LIB.genres.map((g, i) => ({ n0: g.name, n1: CAMO_CATS[i % CAMO_CATS.length], kind: 'library', genre: g.id, key: g.id, color: g.color })),
+        { n0: 'Đang đọc', n1: 'Theo dõi', kind: 'history', color: '#7030A0' },
+        { n0: 'Nhập link', n1: 'Import', kind: 'import', color: '#217346' }
       ]
     };
+  }
+  function refreshNames() {
+    const k = settings.camo ? 'n1' : 'n0';
+    W.list.forEach(wb => { if (wb[k]) wb.name = wb[k]; wb.sheets.forEach(s => { if (s[k]) s.name = s[k]; }); });
+    $('#tsearch').placeholder = settings.camo ? 'Tìm kiếm (Alt+Q)' : 'Tìm truyện… (Alt+Q)';
+    $('#libtab').innerHTML = settings.camo ? '&#x2302; Tổng hợp' : '&#x2302; Thư viện';
   }
   function bossWorkbook() {
     return { id: 'boss', name: 'Bao_cao_KPI_Q4_2026.xlsx', kind: 'boss', active: 0, sheets: [{ name: 'Tổng quan', kind: 'boss' }, { name: 'Chi tiết', kind: 'boss2' }, { name: 'Dữ liệu', kind: 'boss3' }] };
@@ -124,13 +168,18 @@
   }
   function syncStorySheets(wb) {
     const b = wb.book;
-    const used = new Set(wb.sheets.map(s => s.name));
+    const used = new Set(wb.sheets.map(s => s.n0 || s.name));
     for (let i = wb.sheets.length - 1; i < b.chapters.length; i++) {
-      wb.sheets.push({ name: chapterSheetName(b, b.chapters[i], i, used), kind: 'reader', ch: i });
+      const n0 = chapterSheetName(b, b.chapters[i], i, used), n1 = 'Đợt ' + pad(i + 1, 2);
+      wb.sheets.push({ n0, n1, name: settings.camo ? n1 : n0, kind: 'reader', ch: i });
     }
   }
   function storyWorkbook(book) {
-    const wb = { id: book.key, name: fileSafe(book.title) + '.xlsx', kind: 'story', book, active: 0, sheets: [{ name: 'Mục lục', kind: 'toc', color: '#217346' }] };
+    const n0 = fileSafe(book.title) + '.xlsx', n1 = 'Theo_doi_PO_' + caseCode(book.key) + '.xlsx';
+    const wb = {
+      id: book.key, n0, n1, name: settings.camo ? n1 : n0, kind: 'story', book, active: 0,
+      sheets: [{ n0: 'Mục lục', n1: 'Danh mục', name: settings.camo ? 'Danh mục' : 'Mục lục', kind: 'toc', color: '#217346' }]
+    };
     syncStorySheets(wb);
     return wb;
   }
@@ -207,10 +256,33 @@
     { k: 'transShort', label: 'Bản dịch', w: 150, en: true },
     { k: 'desc', label: 'Mô tả', w: 560 }
   ];
+  const LCOLS_CAMO = [
+    { k: 'idx', label: 'STT', w: 48, num: true },
+    { k: 'code', label: 'Mã hồ sơ', w: 104 },
+    { k: 'title', label: 'Hạng mục', w: 230 },
+    { k: 'ncc', label: 'Mã NCC', w: 86, en: true },
+    { k: 'cat', label: 'Nhóm hàng', w: 124, en: true },
+    { k: 'chapters', label: 'Số đợt', w: 74, num: true },
+    { k: 'words', label: 'Khối lượng', w: 120, num: true },
+    { k: 'price', label: 'Đơn giá', w: 92, num: true },
+    { k: 'value', label: 'Thành tiền', w: 136, num: true },
+    { k: 'prog', label: 'Tiến độ', w: 110, num: true },
+    { k: 'stat', label: 'Trạng thái', w: 108, en: true }
+  ];
+  const lcols = () => (settings.camo ? LCOLS_CAMO : LCOLS);
+  function camoFields(s) {
+    const key = 'lib:' + s.id, h = histOf(key);
+    const price = 1000 * (5 + hashStr(key + '$') % 90);
+    const prog = h && h.total ? Math.min(100, Math.round(h.max / h.total * 100)) : 0;
+    return {
+      code: caseCode(key), ncc: nccOf(s.author), cat: catOf(s.genre), price, value: (s.words || 0) * price,
+      prog, stat: prog >= 100 ? 'Hoàn tất' : prog > 0 ? 'Đang xử lý' : 'Chờ xử lý'
+    };
+  }
   const getFilt = key => (S.filt[key] = S.filt[key] || { sort: null, q: {}, sel: {} });
   function baseList(sh) {
     const list = sh.genre ? LIB.stories.filter(s => s.genre === sh.genre) : LIB.stories;
-    return list.map((s, i) => Object.assign({ idx: i + 1 }, s));
+    return list.map((s, i) => Object.assign({ idx: i + 1 }, s, settings.camo ? camoFields(s) : null));
   }
   function filteredList(sh) {
     const f = getFilt(sh.key);
@@ -219,8 +291,9 @@
       for (const k in f.sel) if (f.sel[k] && !f.sel[k].includes(row[k])) return false;
       return true;
     });
-    if (f.sort) {
-      const col = LCOLS.find(c => c.k === f.sort.k), d = f.sort.dir;
+    const col = f.sort && lcols().find(c => c.k === f.sort.k);
+    if (col) {
+      const d = f.sort.dir;
       list = list.slice().sort((a, b) => {
         const x = a[col.k], y = b[col.k];
         const r = col.num ? x - y : String(x).localeCompare(String(y), 'vi');
@@ -231,7 +304,59 @@
   }
   const filterActive = (f, k) => !!(f.q[k] || f.sel[k] || (f.sort && f.sort.k === k));
 
+  function filterHeader(f, cols) {
+    return {
+      cells: cols.map((col, i) => C(i, col.label, {
+        cls: 'th',
+        html: esc(col.label) + `<button class="fbtn${filterActive(f, col.k) ? ' on' : ''}" data-filter="${col.k}" title="Sắp xếp & Lọc">${filterActive(f, col.k) ? (f.sort && f.sort.k === col.k ? (f.sort.dir > 0 ? '▲' : '▼') : '⧩') : '▾'}</button>`
+      }))
+    };
+  }
+  function modelLibraryCamo(sh) {
+    const f = getFilt(sh.key), cols = LCOLS_CAMO, NC = cols.length;
+    const all = baseList(sh), list = filteredList(sh);
+    const maxW = Math.max(1, ...all.map(s => s.words || 0));
+    const now = new Date();
+    const rows = [];
+    rows[0] = { cells: [C(0, 'TỔNG HỢP HỒ SƠ MUA HÀNG — ' + sh.name.toUpperCase(), { cs: NC, cls: 'title', html: '<b>TỔNG HỢP HỒ SƠ MUA HÀNG</b> — ' + esc(sh.name.toUpperCase()) })] };
+    rows[1] = { cells: [C(0, `Hiển thị ${list.length}/${all.length} hồ sơ · Đơn vị tính: VNĐ · Cập nhật ${fmtDate(now)} ${now.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' })}`, { cs: NC, cls: 'note' })] };
+    rows[3] = filterHeader(f, cols);
+    list.forEach((s, i) => {
+      const b = i % 2 ? ' b' : '', r = 5 + i;
+      rows.push({
+        cells: [
+          C(0, s.idx, { cls: 'num' + b, v: s.idx }),
+          C(1, s.code, { cls: b }),
+          C(2, s.title, { cls: 'link' + b, act: 'open:' + s.id, f: `=HYPERLINK("#${s.code}";"${s.title}")` }),
+          C(3, s.ncc, { cls: 'center' + b }),
+          C(4, s.cat, { cls: b }),
+          C(5, s.chapters, { cls: 'num' + b, v: s.chapters }),
+          C(6, fmtNum(s.words || 0), { cls: 'num databar' + b, f: String(s.words || 0), v: s.words || 0, html: `<span class="dbar" style="--p:${((s.words || 0) / maxW).toFixed(3)}"></span><span class="dv">${fmtNum(s.words || 0)}</span>` }),
+          C(7, fmtNum(s.price), { cls: 'num' + b, f: String(s.price), v: s.price }),
+          C(8, fmtNum(s.value), { cls: 'num' + b, f: `=G${r}*H${r}`, v: s.value }),
+          C(9, s.prog + '%', { cls: 'num databar' + b, f: String(s.prog / 100), v: s.prog / 100, html: `<span class="dbar" style="--p:${(s.prog / 100).toFixed(3)}"></span><span class="dv">${s.prog}%</span>` }),
+          C(10, s.stat, { cls: s.stat === 'Hoàn tất' ? 'good' : s.stat === 'Đang xử lý' ? 'neutral' : b })
+        ]
+      });
+    });
+    const r0 = 5, r1 = 4 + list.length;
+    const sum = k => list.reduce((a, s) => a + (s[k] || 0), 0);
+    rows.push({
+      cells: [
+        C(0, 'Tổng cộng', { cls: 'tot', cs: 5 }),
+        C(5, sum('chapters'), { cls: 'tot num', f: `=SUBTOTAL(109;F${r0}:F${r1})`, v: sum('chapters') }),
+        C(6, fmtNum(sum('words')), { cls: 'tot num', f: `=SUBTOTAL(109;G${r0}:G${r1})`, v: sum('words') }),
+        C(7, '', { cls: 'tot' }),
+        C(8, fmtNum(sum('value')), { cls: 'tot num', f: `=SUBTOTAL(109;I${r0}:I${r1})`, v: sum('value') }),
+        C(9, list.length ? Math.round(sum('prog') / list.length) + '%' : '', { cls: 'tot num', f: `=AVERAGE(J${r0}:J${r1})` }),
+        C(10, '', { cls: 'tot' })
+      ]
+    });
+    return { cols: cols.map(c => c.w), rows, minCols: 14 };
+  }
+
   function modelLibrary(sh) {
+    if (settings.camo) return modelLibraryCamo(sh);
     const f = getFilt(sh.key);
     const all = baseList(sh), list = filteredList(sh);
     const maxWords = Math.max(1, ...all.map(s => s.words || 0));
@@ -241,12 +366,7 @@
     rows[0] = { cells: [C(0, 'THƯ VIỆN TRUYỆN — ' + label, { cs: NC, cls: 'title', html: '<b>THƯ VIỆN TRUYỆN</b> — ' + esc(label) })] };
     rows[1] = { cells: [C(0, `Hiển thị ${list.length}/${all.length} truyện · Tác phẩm đã hết bảo hộ bản quyền (Trung, Anh, Mỹ, Đức, Đan Mạch, Nhật, Việt Nam…), truyện nước ngoài là bản dịch mới · Bấm tên truyện (chữ xanh) để đọc · ▾ để sắp xếp/lọc`, { cs: NC, cls: 'note' })] };
     if (!all.length) rows[2] = { cells: [C(0, 'Chưa có truyện trong thể loại này — chạy scripts/translate.js rồi scripts/build-library.js để bổ sung.', { cs: NC, cls: 'neutral' })] };
-    rows[3] = {
-      cells: LCOLS.map((col, i) => C(i, col.label, {
-        cls: 'th',
-        html: esc(col.label) + `<button class="fbtn${filterActive(f, col.k) ? ' on' : ''}" data-filter="${col.k}" title="Sắp xếp & Lọc">${filterActive(f, col.k) ? (f.sort && f.sort.k === col.k ? (f.sort.dir > 0 ? '▲' : '▼') : '⧩') : '▾'}</button>`
-      }))
-    };
+    rows[3] = filterHeader(f, LCOLS);
     list.forEach((s, i) => {
       const b = i % 2 ? ' b' : '';
       const ai = s.transShort === 'Dịch máy (AI)';
@@ -280,27 +400,28 @@
   }
 
   function modelHistory() {
-    const h = getHist();
+    const h = getHist(), cm = settings.camo;
     const rows = [];
-    rows[0] = { cells: [C(0, 'ĐANG ĐỌC', { cs: 7, cls: 'title', html: '<b>ĐANG ĐỌC</b> — lịch sử đọc trên trình duyệt này' })] };
-    rows[1] = { cells: [C(0, h.length ? `${h.length} truyện · Bấm tên truyện để đọc tiếp` : 'Chưa có lịch sử. Mở một truyện bất kỳ trong các sheet thể loại để bắt đầu.', { cs: 7, cls: 'note' })] };
-    rows[3] = { cells: ['STT', 'Tên truyện', 'Thể loại', 'Đang ở', 'Tiến độ', 'Lần đọc cuối', 'Nguồn'].map((t, i) => C(i, t, { cls: 'th' })) };
+    rows[0] = { cells: [C(0, cm ? 'THEO DÕI TIẾN ĐỘ' : 'ĐANG ĐỌC', { cs: 7, cls: 'title', html: cm ? '<b>THEO DÕI TIẾN ĐỘ</b> — hồ sơ đang xử lý' : '<b>ĐANG ĐỌC</b> — lịch sử đọc trên trình duyệt này' })] };
+    rows[1] = { cells: [C(0, h.length ? (cm ? `${h.length} hồ sơ` : `${h.length} truyện · Bấm tên truyện để đọc tiếp`) : (cm ? 'Chưa có dữ liệu.' : 'Chưa có lịch sử. Mở một truyện bất kỳ trong các sheet thể loại để bắt đầu.'), { cs: 7, cls: 'note' })] };
+    rows[3] = { cells: (cm ? ['STT', 'Hạng mục', 'Nhóm hàng', 'Đợt hiện tại', 'Tiến độ', 'Cập nhật', 'Mã hồ sơ'] : ['STT', 'Tên truyện', 'Thể loại', 'Đang ở', 'Tiến độ', 'Lần đọc cuối', 'Nguồn']).map((t, i) => C(i, t, { cls: 'th' })) };
     h.forEach((e, i) => {
       const b = i % 2 ? ' b' : '';
       const p = e.total ? Math.min(1, e.max / e.total) : 0;
+      const g = LIB.genres.find(x => x.name === e.genre);
       rows.push({
         cells: [
           C(0, i + 1, { cls: 'num' + b }),
           C(1, e.title, { cls: 'link' + b, act: 'resume:' + i }),
-          C(2, e.genre, { cls: b }),
-          C(3, 'Chương ' + (e.ch + 1) + '/' + e.total, { cls: b }),
+          C(2, cm ? (g ? catOf(g.id) : 'Khác') : e.genre, { cls: b }),
+          C(3, (cm ? 'Đợt ' : 'Chương ') + (e.ch + 1) + '/' + e.total, { cls: b }),
           C(4, Math.round(p * 100) + '%', { cls: 'num databar' + b, html: `<span class="dbar" style="--p:${p.toFixed(3)}"></span><span class="dv">${Math.round(p * 100)}%</span>` }),
           C(5, new Date(e.ts).toLocaleString('vi-VN'), { cls: 'num' + b }),
-          C(6, e.src === 'web' ? (e.bookUrl || e.url) : 'Thư viện', { cls: b })
+          C(6, cm ? caseCode(e.key) : e.src === 'web' ? (e.bookUrl || e.url) : 'Thư viện', { cls: b })
         ]
       });
     });
-    if (h.length) { rows.push(null); rows.push({ cells: [C(1, '🗑 Xóa lịch sử đọc', { cls: 'link', act: 'clearHist' })] }); }
+    if (h.length) { rows.push(null); rows.push({ cells: [C(1, cm ? 'Xóa dữ liệu theo dõi' : '🗑 Xóa lịch sử đọc', { cls: 'link', act: 'clearHist' })] }); }
     return { cols: [48, 300, 100, 120, 140, 150, 360], rows };
   }
 
@@ -347,7 +468,50 @@
     return { cols: [36, 150, 110, 110, 110, 110, 110, 110, 130], rows };
   }
 
+  function modelTocCamo(wb) {
+    const b = wb.book, rows = [], hist = histOf(b.key), code = caseCode(b.key);
+    const r = rng(hashStr(b.key + '#toc'));
+    const today = new Date();
+    const chs = b.chapters.map((ch, i) => {
+      const val = Math.round((40 + r() * 900) * 1e6 / 1000) * 1000;
+      const d = new Date(today); d.setDate(d.getDate() - Math.round((b.chapters.length - i) * (1 + r() * 3)));
+      return { ch, i, val, date: d };
+    });
+    const total = chs.reduce((a, x) => a + x.val, 0);
+    const prog = hist && b.chapters.length ? Math.min(1, hist.max / b.chapters.length) : 0;
+    rows[0] = { cells: [C(1, 'HỒ SƠ MUA HÀNG — ' + code, { cs: 5, cls: 'title', html: '<b>HỒ SƠ MUA HÀNG</b> — ' + code })] };
+    rows[1] = { cells: [C(1, 'Đơn vị tính: VNĐ · Cập nhật ' + fmtDate(today), { cs: 4, cls: 'note' }), C(5, '⌂ Tổng hợp', { cls: 'link right', act: 'lib' })] };
+    const props = [
+      ['Mã hồ sơ', code], ['Hạng mục', b.title], ['Mã NCC', nccOf(b.author || b.url), b.author],
+      ['Nhóm hàng', b.story ? catOf(b.story.genre) : 'Khác'], ['Số đợt', b.chapters.length, null, 'num'],
+      ['Tổng giá trị', fmtNum(total), `=SUM(F13:F${12 + chs.length})`, 'num'], ['Tiến độ', pct1(prog), null, prog >= 1 ? 'num good' : prog > 0 ? 'num neutral' : 'num']
+    ];
+    props.forEach(([k, v, f, cls], i) => { rows[3 + i] = { cells: [C(1, k, { cls: 'lbl' }), C(2, v, { cls: cls || '', f: f || undefined })] }; });
+    const resumeCh = hist ? Math.min(hist.ch, b.chapters.length - 1) : 0;
+    rows[10] = { h: 26, cells: [C(1, '▶ Mở', { cs: 2, cls: 'btncell', act: 'sheet:' + (resumeCh + 1), html: `<button>▶ Mở ${esc(wb.sheets[resumeCh + 1] ? wb.sheets[resumeCh + 1].name : '')}</button>` }),
+      C(3, 'Xuất .xlsx', { cls: 'btncell', act: 'export', html: '<button class="ghost">⤓ Xuất .xlsx</button>' })] };
+    rows[11] = { cells: ['Sheet', 'Diễn giải', 'Trạng thái', 'Số dòng', 'Giá trị (VNĐ)', 'Ngày cập nhật'].map((t, i) => C(i + 1, t, { cls: 'th' })) };
+    chs.forEach(({ ch, i, val, date }) => {
+      const bb = i % 2 ? ' b' : '';
+      const st = hist && i === hist.ch ? 'Đang xử lý' : hist && i < hist.max ? 'Hoàn tất' : ch.state === 'loading' ? 'Đang tải…' : ch.state === 'error' ? 'Lỗi tải' : 'Chờ xử lý';
+      rows.push({
+        cells: [
+          C(1, wb.sheets[i + 1].name, { cls: 'link' + bb, act: 'sheet:' + (i + 1) }),
+          C(2, ch.title, { cls: 'link' + bb, act: 'sheet:' + (i + 1) }),
+          C(3, st, { cls: st === 'Hoàn tất' ? 'good' : st === 'Đang xử lý' ? 'neutral' : st === 'Lỗi tải' ? 'bad' : bb }),
+          C(4, ch.paras ? ch.paras.length : '', { cls: 'num' + bb, v: ch.paras ? ch.paras.length : undefined }),
+          C(5, fmtNum(val), { cls: 'num' + bb, f: String(val), v: val }),
+          C(6, fmtDate(date), { cls: 'center' + bb })
+        ]
+      });
+    });
+    rows.push({ cells: [C(1, 'Tổng cộng', { cls: 'tot', cs: 4 }), C(5, fmtNum(total), { cls: 'tot num', f: `=SUM(F13:F${12 + chs.length})`, v: total }), C(6, '', { cls: 'tot' })] });
+    if (b.nextUrl) rows.push({ cells: [C(1, '＋ Tải thêm', { cs: 2, cls: 'link', act: 'more' })] });
+    return { cols: [36, 110, 360, 110, 80, 130, 110], rows };
+  }
+
   function modelToc(wb) {
+    if (settings.camo) return modelTocCamo(wb);
     const b = wb.book, rows = [];
     const hist = histOf(b.key);
     rows[0] = { cells: [C(1, b.title, { cs: 5, cls: 'title', html: '<b>' + esc(b.title) + '</b>' })] };
@@ -396,7 +560,96 @@
     };
   }
 
+  function navRowCamo(wb, i) {
+    const n = wb.book.chapters.length;
+    const hasNext = i < n - 1, canMore = !hasNext && wb.book.nextUrl;
+    return {
+      cells: [
+        C(0, '◀ Đợt trước', { cs: 2, cls: i > 0 ? 'link' : 'muted', act: i > 0 ? 'sheet:' + i : null }),
+        C(2, '☰ Danh mục', { cls: 'link center', act: 'sheet:0' }),
+        C(3, '⌂ Tổng hợp', { cls: 'link', act: 'lib' }),
+        C(7, hasNext ? 'Đợt sau ▶' : canMore ? 'Tải đợt sau ▶' : '—', { cs: 3, cls: (hasNext || canMore ? 'link' : 'muted') + ' right', act: hasNext ? 'sheet:' + (i + 2) : canMore ? 'more' : null })
+      ]
+    };
+  }
+  // Trang đọc dạng "Bảng theo dõi đơn mua hàng": mỗi đoạn văn = 1 PO (cùng màu nền),
+  // mỗi câu = 1 dòng hàng; nội dung truyện nằm ở cột "Diễn giải", các cột còn lại là số giả.
+  const STATUS_CLS = { 'Đã nhận': 'good', 'Thiếu hàng': 'bad', 'Đang giao': 'neutral', 'Chờ duyệt': '' };
+  function modelReaderCamo(wb, sh) {
+    const b = wb.book, i = sh.ch, ch = b.chapters[i];
+    ensureChapter(b, i);
+    const descW = Math.max(340, settings.readWidth - 200), maxCh = Math.max(30, Math.round(descW / 7.3));
+    const cols = [44, 104, 92, descW, 52, 78, 96, 124, 90, 100];
+    const now = new Date();
+    const rows = [];
+    rows[0] = { cells: [C(0, 'BẢNG THEO DÕI ĐƠN MUA HÀNG — ' + sh.name.toUpperCase(), { cs: 10, cls: 'title', html: '<b>BẢNG THEO DÕI ĐƠN MUA HÀNG</b> — ' + esc(sh.name.toUpperCase()) })] };
+    rows[1] = { cells: [C(0, `Hạng mục: ${ch.title} · Mã hồ sơ: ${caseCode(b.key)} · Đơn vị tính: VNĐ · Cập nhật ${fmtDate(now)}`, { cs: 10, cls: 'note' })] };
+    rows[4] = navRowCamo(wb, i);
+    rows[5] = { cells: ['STT', 'Số PO', 'Mã vật tư', 'Diễn giải', 'ĐVT', 'Số lượng', 'Đơn giá', 'Thành tiền', 'Ngày giao', 'Trạng thái'].map((t, k) => C(k, t, { cls: 'th' })) };
+    let line = 0, sQty = 0, sAmt = 0, nPO = 0, nRecv = 0, nLate = 0;
+    if (ch.state === 'error') {
+      rows.push({ cells: [C(3, '⚠ ' + ch.err, { cs: 7, cls: 'err wrap' })] });
+      rows.push({ cells: [C(3, '↻ Tải lại', { cls: 'link', act: 'retry:' + i })] });
+    } else if (!ch.paras) {
+      rows.push({ cells: [C(3, '⏳ Đang tải dữ liệu…', { cls: 'note' })] });
+    } else {
+      const r = rng(hashStr(b.key + '#' + i));
+      const poBase = 100 + Math.floor(r() * 8000), ym = yymm();
+      ch.paras.forEach((p, k) => {
+        const po = 'PO' + ym + '-' + pad(poBase + k, 4);
+        const off = Math.round(-28 + r() * 42), d = new Date(now);
+        d.setDate(d.getDate() + off);
+        const rr = r();
+        const st = off < 0 ? (rr < 0.85 ? 'Đã nhận' : 'Thiếu hàng') : (rr < 0.6 ? 'Đang giao' : 'Chờ duyệt');
+        const band = k % 2 ? ' b' : '';
+        nPO++; if (st === 'Đã nhận') nRecv++; if (st === 'Thiếu hàng') nLate++;
+        chunkText(p, maxCh).forEach(txt => {
+          const u = CAMO_UNITS[Math.floor(r() * CAMO_UNITS.length)];
+          const step = u[1] >= 1e6 ? 10000 : u[1] >= 1e5 ? 1000 : 500;
+          const price = Math.round((u[1] + r() * (u[2] - u[1])) / step) * step;
+          const qty = Math.round(u[3] + r() * r() * (u[4] - u[3]));
+          const amt = price * qty;
+          const vt = VT_PREFIX[Math.floor(r() * VT_PREFIX.length)] + '-' + pad(Math.floor(r() * 100000), 5);
+          const xr = rows.length + 1;
+          line++; sQty += qty; sAmt += amt;
+          rows.push({
+            cells: [
+              C(0, line, { cls: 'num' + band, v: line }),
+              C(1, po, { cls: band }),
+              C(2, vt, { cls: band }),
+              C(3, txt, { cls: 'desc' + band }),
+              C(4, u[0], { cls: 'center' + band }),
+              C(5, fmtNum(qty), { cls: 'num' + band, f: String(qty), v: qty }),
+              C(6, fmtNum(price), { cls: 'num' + band, f: String(price), v: price }),
+              C(7, fmtNum(amt), { cls: 'num' + band, f: `=F${xr}*G${xr}`, v: amt }),
+              C(8, fmtDate(d), { cls: 'center' + band }),
+              C(9, st, { cls: STATUS_CLS[st] || band.trim() })
+            ]
+          });
+        });
+      });
+      const r0 = 7, r1 = 6 + line, vat = Math.round(sAmt / 10);
+      rows.push(null);
+      const xt = rows.length + 1;
+      rows.push({ cells: [C(0, 'Cộng tiền hàng', { cls: 'tot', cs: 5 }), C(5, fmtNum(sQty), { cls: 'tot num', f: `=SUM(F${r0}:F${r1})`, v: sQty }), C(6, '', { cls: 'tot' }),
+        C(7, fmtNum(sAmt), { cls: 'tot num', f: `=SUM(H${r0}:H${r1})`, v: sAmt }), C(8, '', { cls: 'tot' }), C(9, '', { cls: 'tot' })] });
+      rows.push({ cells: [C(0, 'Thuế GTGT (10%)', { cls: 'lbl', cs: 7 }), C(7, fmtNum(vat), { cls: 'num', f: `=ROUND(H${xt}*10%;0)`, v: vat })] });
+      rows.push({ cells: [C(0, 'Tổng thanh toán', { cls: 'lbl', cs: 7 }), C(7, fmtNum(sAmt + vat), { cls: 'num bold', f: `=H${xt}+H${xt + 1}`, v: sAmt + vat })] });
+      if (b.src === 'web' && !S.dry && b.chapters[i + 1] && b.chapters[i + 1].state === 'idle') setTimeout(() => ensureChapter(b, i + 1), 600);
+    }
+    const recv = nPO ? nRecv / nPO : 0;
+    rows[2] = { cells: [C(0, 'Số PO', { cls: 'lbl', cs: 2 }), C(2, nPO, { cls: 'num', v: nPO }), C(4, 'Tổng giá trị', { cls: 'lbl', cs: 2 }),
+      C(6, fmtNum(Math.round(sAmt * 1.1)), { cls: 'num bold', cs: 2, v: Math.round(sAmt * 1.1) }), C(8, 'Tỷ lệ đã nhận', { cls: 'lbl' }), C(9, pct1(recv), { cls: 'num ' + (recv >= 0.7 ? 'good' : recv >= 0.4 ? 'neutral' : 'bad'), v: recv })] };
+    rows[3] = { cells: [C(0, 'Số dòng', { cls: 'lbl', cs: 2 }), C(2, line, { cls: 'num', v: line }), C(4, 'Tổng số lượng', { cls: 'lbl', cs: 2 }),
+      C(6, fmtNum(sQty), { cls: 'num', cs: 2, v: sQty }), C(8, 'PO thiếu hàng', { cls: 'lbl' }), C(9, nLate, { cls: 'num' + (nLate ? ' bad' : ''), v: nLate })] };
+    rows.push(null);
+    rows.push(navRowCamo(wb, i));
+    if (i === b.chapters.length - 1 && !b.nextUrl && ch.paras) rows.push({ cells: [C(3, '— Hết dữ liệu —', { cls: 'note' })] });
+    return { cols, rows, minRows: rows.length + 12, minCols: 14 };
+  }
+
   function modelReader(wb, sh) {
+    if (settings.camo) return modelReaderCamo(wb, sh);
     const b = wb.book, i = sh.ch, ch = b.chapters[i];
     ensureChapter(b, i);
     const unit = Math.round(settings.readWidth / 9);
@@ -500,7 +753,7 @@
     const wb = curWb(), sh = curSheet();
     const model = buildModel(wb, sh);
     S.model = model;
-    gridWrap.className = 'k-' + sh.kind;
+    gridWrap.className = settings.camo && sh.kind === 'reader' ? 'k-po' : 'k-' + sh.kind;
     grid.innerHTML = gridHtml(model, sh);
     S.selTd = null;
     gridWrap.scrollTop = sh.scrollTop || 0;
@@ -513,6 +766,7 @@
   function defaultSel(sh) {
     if (sh.kind === 'library' || sh.kind === 'history') return { r: 4, c: 1 };
     if (sh.kind === 'import') return { r: 3, c: 2 };
+    if (sh.kind === 'reader' && settings.camo) return { r: 6, c: 3 };
     if (sh.kind === 'reader' || sh.kind === 'toc') return { r: 0, c: 1 };
     return { r: 0, c: 0 };
   }
@@ -601,7 +855,10 @@
   function updateStatus() {
     const sh = curSheet(), wb = curWb();
     const parts = [];
-    if (sh.kind === 'reader') {
+    if (sh.kind === 'reader' && settings.camo) {
+      const m = S.model, n = m ? m.rows.filter(r => r && r.cells.length === 10 && r.cells[0].v != null).length : 0;
+      parts.push(`${sh.name}/${pad(wb.book.chapters.length, 2)}    ${fmtNum(n)} bản ghi`);
+    } else if (sh.kind === 'reader') {
       const max = gridWrap.scrollHeight - gridWrap.clientHeight;
       const pct = max > 0 ? Math.round(gridWrap.scrollTop / max * 100) : 100;
       parts.push(`Chương ${sh.ch + 1}/${wb.book.chapters.length}${wb.book.nextUrl ? '+' : ''} · Đã đọc ${pct}%`);
@@ -852,11 +1109,21 @@
         if (cols) ws['!cols'] = cols;
         X.utils.book_append_sheet(out, ws, n);
       };
+      // Xuất đúng như đang hiển thị trên lưới (số giữ kiểu số nhờ cell.v)
+      const addModel = sh => {
+        const m = buildModel(wb, sh);
+        add(sh.name, m.rows.map(row => {
+          const arr = [];
+          if (row) row.cells.forEach(cell => { arr[cell.c] = cell.v != null ? cell.v : cell.t; });
+          return arr;
+        }), m.cols.map(w => ({ wch: Math.round(w / 7) })));
+      };
       if (wb.kind === 'library') {
         wb.sheets.filter(s => s.kind === 'library').forEach(sh => {
           const list = filteredList(sh);
-          add(sh.name, [LCOLS.map(c => c.label)].concat(list.map(s => LCOLS.map(c => s[c.k] == null ? '' : s[c.k]))),
-            LCOLS.map(c => ({ wch: Math.round(c.w / 7) })));
+          const cols = lcols();
+          add(sh.name, [cols.map(c => c.label)].concat(list.map(s => cols.map(c => s[c.k] == null ? '' : s[c.k]))),
+            cols.map(c => ({ wch: Math.round(c.w / 7) })));
         });
       } else if (wb.kind === 'story') {
         const b = wb.book;
@@ -867,19 +1134,15 @@
             if (b.src === 'web') await sleep(300);
           }
         }
+        if (settings.camo) wb.sheets.forEach(addModel);
+        else {
         const toc = [[b.title], [], ['Tác giả', b.author || ''], ['Thể loại', b.genre || ''], ['Nguồn', b.url || ''], ['Giới thiệu', b.desc || ''], [], ['STT', 'Sheet', 'Tiêu đề chương']];
         b.chapters.forEach((c, i) => toc.push([i + 1, wb.sheets[i + 1].name, c.title]));
         add('Mục lục', toc, [{ wch: 12 }, { wch: 16 }, { wch: 80 }]);
         b.chapters.forEach((c, i) => add(wb.sheets[i + 1].name, [[c.title], []].concat((c.paras || ['(Không tải được nội dung: ' + (c.err || '') + ')']).map(p => [p])), [{ wch: 120 }]));
+        }
       } else {
-        wb.sheets.forEach(sh => {
-          const m = buildModel(wb, sh);
-          add(sh.name, m.rows.map(row => {
-            const arr = [];
-            if (row) row.cells.forEach(cell => { arr[cell.c] = cell.t; });
-            return arr;
-          }));
-        });
+        wb.sheets.forEach(addModel);
       }
       X.writeFile(out, wb.name);
       toast('Đã xuất ' + wb.name, 'ok');
@@ -983,6 +1246,7 @@
     <kbd>Alt + Q</kbd><span>Tìm truyện trong thư viện</span>
     <kbd>Ctrl + S</kbd><span>Xuất file .xlsx thật (mỗi chương một sheet)</span>
     <kbd>Ctrl + + / −</kbd><span>Phóng to / thu nhỏ</span>
+    <kbd>Ctrl + Shift + M</kbd><span>Bật/tắt ngụy trang số liệu (bảng mua hàng)</span>
     <kbd>Esc</kbd><span>"Sếp đến!" — chuyển ngay sang bảng báo cáo (nhấn lại để quay về)</span>
     <kbd>Nhấp đúp tab ribbon</kbd><span>Thu gọn / mở ribbon</span>
   </div>`;
@@ -996,10 +1260,21 @@
     syncRibbonState();
   }
 
+  function toggleCamo() {
+    settings.camo = !settings.camo;
+    S.filt = {};
+    W.list.forEach(wb => wb.sheets.forEach(s => { s.sel = null; s.scrollTop = 0; s.scrollLeft = 0; s.colW = null; }));
+    store.set('settings', settings);
+    refreshNames();
+    applySettings();
+    renderAll();
+    toast(settings.camo ? 'Đã bật ngụy trang số liệu (Ctrl+Shift+M để tắt)' : 'Đã tắt ngụy trang số liệu', 'ok');
+  }
+
   /* ------------------------------ Bộ lọc cột ------------------------------ */
   function openFilter(btn, key) {
     closeMenus();
-    const sh = curSheet(), f = getFilt(sh.key), col = LCOLS.find(c => c.k === key);
+    const sh = curSheet(), f = getFilt(sh.key), col = lcols().find(c => c.k === key);
     const values = col.en ? [...new Set(baseList(sh).map(r => r[key]))].sort((a, b) => a.localeCompare(b, 'vi')) : null;
     const sel = f.sel[key] ? new Set(f.sel[key]) : new Set(values || []);
     const numeric = col.num || col.date;
@@ -1177,7 +1452,7 @@
         { label: 'Hiện', cols: [{ stack: [{ check: 'grid', label: 'Đường lưới' }, { check: 'fbar', label: 'Thanh công thức' }, { check: 'headings', label: 'Tiêu đề' }] }] },
         { label: 'Thu phóng', cols: [{ big: big('zoom', 'Thu phóng', 'zoomMenu') }, { big: big('z100', '100%', 'zoom100') }] },
         { label: 'Cửa sổ', cols: [{ big: big('freeze', 'Cố định Ô', 'decor') }, { big: big('windows', 'Chuyển Cửa sổ', 'windows') }, { big: big('full', 'Toàn màn hình', 'full') }, { big: big('moon', 'Chế độ tối', 'dark', { toggle: 'dark' }) }] },
-        { label: 'Bí mật', cols: [{ big: big('boss', 'Sếp đến! (Esc)', 'boss') }] }
+        { label: 'Bí mật', cols: [{ big: big('table', 'Ngụy trang số liệu', 'camo', { toggle: 'camo' }) }, { big: big('boss', 'Sếp đến! (Esc)', 'boss') }] }
       ]
     },
     {
@@ -1234,7 +1509,7 @@
     switch (name) {
       case 'decor': {
         const it = el && el.title ? el.title : 'Tính năng này';
-        return toast(`“${it}” chỉ để trang trí — đây là trình đọc truyện 😉`);
+        return toast(settings.camo ? `“${it}”: tính năng đang được cập nhật` : `“${it}” chỉ để trang trí — đây là trình đọc truyện 😉`);
       }
       case 'copy': {
         const td = S.selTd; if (!td) return;
@@ -1260,6 +1535,7 @@
         if (document.fullscreenElement) document.exitFullscreen(); else if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen().catch(() => {});
         return;
       case 'boss': return toggleBoss();
+      case 'camo': return toggleCamo();
       case 'find': return openFind();
       case 'export': return exportXlsx();
       case 'importSheet': return goLibrary('import');
@@ -1559,6 +1835,7 @@
       toggleBoss();
       return;
     }
+    if ((e.ctrlKey || e.metaKey) && e.shiftKey && k.toLowerCase() === 'm') { e.preventDefault(); toggleCamo(); return; }
     if ((e.ctrlKey || e.metaKey || e.altKey) && (k === 'PageDown' || k === 'PageUp')) { e.preventDefault(); switchSheet(k === 'PageDown' ? 1 : -1); return; }
     if (e.ctrlKey || e.metaKey) {
       const kl = k.toLowerCase();
@@ -1605,6 +1882,7 @@
     setStatus(null);
     W.list.push(libraryWorkbook());
     W.boss = bossWorkbook();
+    refreshNames();
     const lastTab = store.get('libTab', 1);
     W.list[0].active = Math.min(lastTab, W.list[0].sheets.length - 1);
     renderRibbon();
